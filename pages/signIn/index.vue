@@ -5,17 +5,20 @@
     </div>
 
     <basicInput
-      v-model="signInData.email"
+      v-model="email"
       cls="login"
-      type="text"
+      type="email"
       placeholder="メールアドレス"
+      id="email"
     />
     <basicInput
-      v-model="signInData.password"
+      v-model="password"
       cls="login"
       type="password"
       placeholder="パスワード"
+      id="password"
     />
+    <ErrorMessage :errorType="errorType" />
     <basicButton class="login_btn" @emitClick="signIn">ログイン</basicButton>
 
     <span class="foget_pass_btn" @click="passWordReset">パスワードをお忘れの方はこちら</span>
@@ -28,21 +31,42 @@
 // コンポーネント
 import linkButton from "~/components/LinkButton";
 import basicInput from "~/components/BasicInput";
+import ErrorMessage from "~/components/ErrorMessage";
 
 // その他
 import Cookies from "universal-cookie";
 
 export default {
-  components: { linkButton, basicInput },
-  data: () => ({
-    signInData: {
+  components: { linkButton, basicInput, ErrorMessage },
+  data() {
+    return {
       email: "",
-      password: ""
-    }
-  }),
+      password: "",
+      errorType: 0
+    };
+  },
   methods: {
-    signIn() {
-      this.$store.dispatch("auth/signInAction", this.signInData);
+    async signIn() {
+      const result = await this.$store.dispatch("auth/signInAction", {
+        email: this.email,
+        password: this.password
+      });
+
+      // エラー処理
+      if (result.code) {
+        console.log(result.code);
+        console.log(result.message);
+        this.errorType = 5;
+        this.formInit();
+      }
+    },
+
+    formInit() {
+      // パスワード入力フォーム初期化
+      document.getElementById("email").value = "";
+      document.getElementById("password").value = "";
+      this.email = "";
+      this.password = "";
     },
 
     passWordReset() {

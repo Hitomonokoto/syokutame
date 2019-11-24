@@ -64,18 +64,21 @@ export const actions = {
 
   // サインイン
   signInAction(context, signInData) {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(signInData.email, signInData.password)
-      .then(user => {
-        console.log("サインインに成功しました！");
-        console.log(user.user.uid);
-      })
-      .catch(error => {
-        console.log("サインインに失敗しました！");
-        console.log(error.code);
-        console.log(error.message);
-      });
+    return new Promise(resolve => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(signInData.email, signInData.password)
+        .then(user => {
+          console.log("サインインに成功しました！");
+          resolve(user.user.uid);
+        })
+        .catch(error => {
+          console.log("サインインに失敗しました！");
+          resolve(error);
+        })
+    });
+
+
   },
 
   // サインアップ
