@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       new_nickname: null,
-      user_id: this.login.user_2.id
+      user_id: this.auth.user_2.id
     };
   },
   methods: {
@@ -39,9 +39,9 @@ export default {
       if (!this.new_nickname) {
         return;
       }
-      this.$store.dispatch("login/changeNicknameAction", {
+      this.$store.dispatch("auth/changeNicknameAction", {
         new_nickname: this.new_nickname,
-        user_id: this.login.user_2.id
+        user_id: this.auth.user_2.id
       });
       this.$emit("emitClick");
     },
@@ -50,7 +50,7 @@ export default {
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

@@ -5,22 +5,22 @@
     </div>
 
     <basicInput
-      v-model="input.email"
+      v-model="signInData.email"
       cls="login"
       type="text"
       placeholder="メールアドレス"
     />
     <basicInput
-      v-model="input.password"
+      v-model="signInData.password"
       cls="login"
       type="password"
       placeholder="パスワード"
     />
-    <basicButton class="login_btn" @emitClick="save">ログイン</basicButton>
+    <basicButton class="login_btn" @emitClick="signIn">ログイン</basicButton>
 
     <span class="foget_pass_btn" @click="passWordReset">パスワードをお忘れの方はこちら</span>
 
-    <linkButton cls="regist_btn" linkTo="/regist" text="新規登録" />
+    <linkButton cls="regist_btn" linkTo="/signUp" text="新規登録" />
   </main>
 </template>
 
@@ -35,18 +35,18 @@ import Cookies from "universal-cookie";
 export default {
   components: { linkButton, basicInput },
   data: () => ({
-    input: {
-      email: null,
-      password: null
+    signInData: {
+      email: "",
+      password: ""
     }
   }),
   methods: {
-    save() {
-      this.login(this.input);
+    signIn() {
+      this.$store.dispatch("auth/signInAction", this.signInData);
     },
 
     passWordReset() {
-      this.$router.push("/login/passWordReset");
+      this.$router.push("/signIn/passWordReset");
     }
   },
   head() {

@@ -28,7 +28,7 @@ export default {
   border-radius: 5px;
   cursor: pointer;
 }
-.login {
+.auth {
   padding: 5px 20px;
 }
 .top_products {

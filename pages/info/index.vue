@@ -69,9 +69,9 @@ export default {
       this.email = this.info.info_data.email;
       this.title = this.info.info_data.title;
       this.message = this.info.info_data.message;
-    } else if (this.login.token) {
-      this.name = this.login.user_2.nickname;
-      this.email = this.login.user_1.email;
+    } else if (this.auth.token) {
+      this.name = this.auth.user_2.nickname;
+      this.email = this.auth.user_1.email;
     }
   },
   methods: {
@@ -106,7 +106,7 @@ export default {
     }
   },
   computed: mapState({
-    login: state => state.login,
+    auth: state => state.auth,
     info: state => state.info
   }),
   watch: {

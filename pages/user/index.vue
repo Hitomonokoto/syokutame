@@ -68,7 +68,7 @@ export default {
     const r = Math.floor(Math.random() * 5) + 1;
     this.image_path = `/mypageImage/${r}.jpg`;
 
-    this.$store.commit("login/getUser_1", data.data.customer);
+    this.$store.commit("auth/getUser_1", data.data.customer);
     this.user_data = data.data.customer;
     this.$store.dispatch(
       "farmers/getFollowerAction",
@@ -86,7 +86,7 @@ export default {
 
       const cookies = new Cookies();
       cookies.remove("token");
-      this.$store.commit("login/logout");
+      this.$store.commit("auth/logout");
       this.$router.push("/");
     },
     menu() {
@@ -98,7 +98,7 @@ export default {
     }
   },
   computed: mapState({
-    Login: state => state.login,
+    Login: state => state.auth,
     Farmers: state => state.farmers
   }),
   watch: {

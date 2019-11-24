@@ -1,4 +1,5 @@
 import firebase from "~/plugins/firebase";
+require("firebase/auth");
 require('firebase/firestore');
 const db = firebase.firestore();
 
@@ -44,12 +45,14 @@ export const actions = {
       business_id: null
     });
   },
+
   // ユーザー情報を取得
   async getUserAction_2(context, payload) {
     const user = await db.collection('users').doc(payload).get();
     console.log(user.data())
     context.commit('getUser_2', user.data());
   },
+
   // ニックネームを変更
   async changeNicknameAction(context, payload) {
     const docRef = await db.collection("users").doc(payload.user_id);
@@ -57,6 +60,34 @@ export const actions = {
       nickname: payload.new_nickname
     });
     context.dispatch("getUserAction_2", payload.user_id)
+  },
+
+  // サインイン
+  signInAction(context, signInData) {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(signInData.email, signInData.password)
+      .then(user => {
+        console.log("サインインに成功しました！");
+        console.log(user.user.uid);
+      })
+      .catch(error => {
+        console.log("サインインに失敗しました！");
+        console.log(error.code);
+        console.log(error.message);
+      });
+  },
+
+  // サインアップ
+  signUpAction(context, signUpData) {
+    firebase.auth().createUserWithEmailAndPassword(signUpData.email, signUpData.password).then(user => {
+      console.log("サインアップに成功しました！");
+      console.log(user.user.uid);
+    }).catch(error => {
+      console.log("サインアップに失敗しました！");
+      console.log(error.code);
+      console.log(error.message);
+    });
   }
 }
 

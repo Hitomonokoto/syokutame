@@ -58,14 +58,14 @@ export default {
     },
     unsub() {
       const data = {
-        user_id: this.login.user_1.id,
+        user_id: this.auth.user_1.id,
         message: this.message
       };
       this.$store.dispatch("unsubscribe/unsubscribeAction", data);
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

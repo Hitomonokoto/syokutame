@@ -12,7 +12,7 @@
           <p class="time">{{ post_data.created.seconds | timestampToDate }}</p>
         </div>
         <basicButton
-          v-if="this.login.user_id == user_id"
+          v-if="this.auth.user_id == user_id"
           cls="post_edit_btn"
           @emitClick="edit"
         >編集</basicButton>
@@ -35,7 +35,7 @@
         :post_id="post_data.post_id"
         :business_id="post_data.business_id"
         :comments="comments"
-        :login_user_id="login.user_id"
+        :login_user_id="auth.user_id"
         :timeline_type="timeline_type"
       />
     </div>
@@ -116,7 +116,7 @@ export default {
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

@@ -11,7 +11,7 @@
       <br />
       <br />下のボタンから登録フォームにアクセス出来ます。
     </p>
-    <linkButton cls="partner_btn" linkTo="/regist" text="ファミリーになる" />
+    <linkButton cls="partner_btn" linkTo="/signUp" text="ファミリーになる" />
   </main>
 </template>
 

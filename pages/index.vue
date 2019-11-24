@@ -4,7 +4,7 @@
     <div class="beginner_area">
       <nuxt-link to="/aboutMyFarm">
         <iconAndTextButton
-          v-if="!login.token"
+          v-if="!auth.token"
           cls="top_beginner_btn"
           text="初めての方はこちら"
           icon="beginner_w"
@@ -29,10 +29,10 @@
         <hr class="line" />
       </div>
 
-      <div class="post_btn" v-if="login.user_2">
+      <div class="post_btn" v-if="auth.user_2">
         <basicButton
           cls="post_btn"
-          v-if="login.user_2.user_type == 1"
+          v-if="auth.user_2.user_type == 1"
           @emitClick="post"
         >Diaryを書く</basicButton>
       </div>
@@ -94,11 +94,8 @@ export default {
     await store.dispatch("products/getPickupProductsAction");
   },
   created() {
-    if (this.login.token) {
-      this.$store.dispatch(
-        "timeline/getLikesAction",
-        this.login.user_2.user_id
-      );
+    if (this.auth.token) {
+      this.$store.dispatch("timeline/getLikesAction", this.auth.user_2.user_id);
     }
   },
   methods: {
@@ -134,7 +131,7 @@ export default {
   },
   computed: mapState({
     products: state => state.products,
-    login: state => state.login,
+    auth: state => state.auth,
     timeline: state => state.timeline
   }),
   head() {

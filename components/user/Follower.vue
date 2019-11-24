@@ -45,7 +45,7 @@ export default {
     }
   },
   computed: mapState({
-    Login: state => state.login,
+    Login: state => state.auth,
     Farmers: state => state.farmers
   })
 };

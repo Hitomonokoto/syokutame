@@ -1,6 +1,6 @@
 <template>
   <div class="comments">
-    <div v-show="login.token" class="send_comment">
+    <div v-show="auth.token" class="send_comment">
       <textarea v-model="comment"></textarea>
       <div class="send_comment">
         <basicButton @emitClick="update">更新</basicButton>
@@ -37,8 +37,8 @@ export default {
         return;
       }
       this.$store.dispatch("timeline/commentAction", {
-        user_id: this.login.user_2.user_id,
-        name: this.login.user_2.nickname,
+        user_id: this.auth.user_2.user_id,
+        name: this.auth.user_2.nickname,
         post_id: this.post_id,
         text: this.comment
       });
@@ -46,7 +46,7 @@ export default {
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

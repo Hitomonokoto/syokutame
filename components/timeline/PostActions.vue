@@ -91,12 +91,12 @@ export default {
       }
     },
     alert() {
-      this.$router.push("/login");
+      this.$router.push("/signIn");
     }
   },
   computed: {
     ...mapState({
-      Login: state => state.login,
+      Login: state => state.auth,
       Timeline: state => state.timeline
     }),
     faHeart() {

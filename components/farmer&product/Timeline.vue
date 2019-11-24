@@ -6,11 +6,11 @@
       <p class="home_sub_title">日々を楽しむ</p>
       <hr class="line" />
     </div>
-    <div class="post_btn" v-if="isPost_btn && login.user_2">
+    <div class="post_btn" v-if="isPost_btn && auth.user_2">
       <div v-if="farmers.farmer">
         <basicButton
           cls="post_btn"
-          v-if="login.user_2.farmer_id == farmers.farmer.sys.id"
+          v-if="auth.user_2.farmer_id == farmers.farmer.sys.id"
           @emitClick="post"
         >Diaryを書く</basicButton>
       </div>
@@ -82,7 +82,7 @@ export default {
   computed: mapState({
     farmers: state => state.farmers,
     timeline: state => state.timeline,
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

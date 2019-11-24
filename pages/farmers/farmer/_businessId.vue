@@ -133,7 +133,7 @@ export default {
   computed: mapState({
     Farmers: state => state.farmers,
     Products: state => state.products,
-    Login: state => state.login
+    Login: state => state.auth
   }),
   head() {
     return {

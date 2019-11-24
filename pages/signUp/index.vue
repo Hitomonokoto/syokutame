@@ -4,25 +4,29 @@
     <iconAndTextButton cls="about_gift_btn" text="ファミリーとは" icon="gift_pink" />
     <div class="regist_form">
       <dl>
-        <dt>ニックネーム</dt>
-        <dd>
-          <basicInput cls="regist_type2" type="text" v-model="nickname" />
-        </dd>
-      </dl>
-      <dl>
         <dt>お名前</dt>
         <dd class="name_area">
           <basicInput
             cls="regist_type1"
             type="text"
-            v-model="createData.lastName"
+            v-model="signUpData.lastName"
             placeholder="姓"
           />
           <basicInput
             cls="regist_type1"
             type="text"
-            v-model="createData.firstName"
+            v-model="signUpData.firstName"
             placeholder="名"
+          />
+        </dd>
+      </dl>
+      <dl>
+        <dt>ニックネーム</dt>
+        <dd>
+          <basicInput
+            cls="regist_type2"
+            type="text"
+            v-model="signUpData.nickname"
           />
         </dd>
       </dl>
@@ -32,7 +36,7 @@
           <basicInput
             cls="regist_type2"
             type="text"
-            v-model="createData.email"
+            v-model="signUpData.email"
           />
         </dd>
       </dl>
@@ -42,7 +46,7 @@
           <basicInput
             cls="regist_type2"
             type="password"
-            v-model="createData.password"
+            v-model="signUpData.password"
           />
           <basicInput
             cls="regist_type2"
@@ -55,7 +59,7 @@
     </div>
     <p v-if="error1" class="error_text">※未入力項目があります。</p>
     <p v-if="error2" class="error_text">※パスワードに誤りがあります。</p>
-    <basicButton cls="regist_btn" @emitClick="regist">登録</basicButton>
+    <basicButton cls="regist_btn" @emitClick="signUp">登録</basicButton>
   </main>
 </template>
 
@@ -68,37 +72,36 @@ import basicInput from "~/components/BasicInput";
 export default {
   components: { basicInput },
   data: () => ({
-    createData: {
+    signUpData: {
       lastName: null,
       firstName: null,
+      nickname: null,
       email: null,
       password: null
     },
-    nickname: null,
     password_check: null,
     error1: false,
     error2: false
   }),
   methods: {
-    regist() {
-      if (this.createData.password != this.password_check) {
+    signUp() {
+      if (this.signUpData.password != this.password_check) {
         this.error1 = false;
         this.error2 = true;
         return;
       }
       if (
         !this.nickname &&
-        !this.createData.lastName &&
-        !this.createData.firstName &&
-        !this.createData.email &&
-        !this.createData.email
+        !this.signUpData.lastName &&
+        !this.signUpData.firstName &&
+        !this.signUpData.email &&
+        !this.signUpData.email
       ) {
         this.error1 = true;
         this.error2 = false;
         return;
       }
-
-      this.create(this.createData);
+      this.$store.dispatch("auth/signUpAction", this.signUpData);
     }
   }
 };

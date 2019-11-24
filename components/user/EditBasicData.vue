@@ -49,10 +49,10 @@ export default {
   },
   data() {
     return {
-      lastName: this.login.user_1.lastName,
-      firstName: this.login.user_1.firstName,
-      email: this.login.user_1.email,
-      user_id: this.login.user_2.user_id
+      lastName: this.auth.user_1.lastName,
+      firstName: this.auth.user_1.firstName,
+      email: this.auth.user_1.email,
+      user_id: this.auth.user_2.user_id
     };
   },
   methods: {
@@ -61,7 +61,7 @@ export default {
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>

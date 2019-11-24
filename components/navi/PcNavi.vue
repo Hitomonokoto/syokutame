@@ -24,11 +24,11 @@
       </div>
     </div>
 
-    <div class="login_area" v-if="!login.token">
-      <nuxt-link to="/login">
+    <div class="login_area" v-if="!auth.token">
+      <nuxt-link to="/signIn">
         <iconAndTextButton cls="login" text="ログイン" icon="login_w" />
       </nuxt-link>
-      <nuxt-link to="/regist">
+      <nuxt-link to="/signUp">
         <iconAndTextButton cls="regist" text="新規登録" icon="beginner_p" />
       </nuxt-link>
     </div>
@@ -49,16 +49,16 @@ export default {
   },
   methods: {
     mypage() {
-      if (this.login.token) {
+      if (this.auth.token) {
         this.$router.push("/user");
       } else {
-        this.$router.push("/login");
+        this.$router.push("/auth");
       }
     }
   },
   computed: mapState({
     products: state => state.products,
-    login: state => state.login,
+    auth: state => state.auth,
     timeline: state => state.timeline
   })
 };

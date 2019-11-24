@@ -5,11 +5,11 @@
         <img class="logo_img" src="~/assets/mainlogo2.png" alt />
       </nuxt-link>
 
-      <div class="login_area" v-if="!login.token">
-        <nuxt-link to="/login">
+      <div class="login_area" v-if="!auth.token">
+        <nuxt-link to="/signIn">
           <iconAndTextButton cls="login" text="ログイン" icon="login_w" />
         </nuxt-link>
-        <nuxt-link to="/regist">
+        <nuxt-link to="/signUp">
           <iconAndTextButton cls="regist" text="新規登録" icon="beginner_p" />
         </nuxt-link>
       </div>
@@ -57,15 +57,15 @@ export default {
   },
   methods: {
     mypage() {
-      if (this.login.token) {
+      if (this.auth.token) {
         this.$router.push("/user");
       } else {
-        this.$router.push("/login");
+        this.$router.push("/auth");
       }
     }
   },
   computed: mapState({
-    login: state => state.login
+    auth: state => state.auth
   })
 };
 </script>
