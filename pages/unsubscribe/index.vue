@@ -58,7 +58,7 @@ export default {
     },
     unsub() {
       const data = {
-        user_id: this.auth.user_1.id,
+        user_id: this.auth.user.id,
         message: this.message
       };
       this.$store.dispatch("unsubscribe/unsubscribeAction", data);

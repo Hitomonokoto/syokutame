@@ -1,6 +1,6 @@
 <template>
   <div class="yyy">
-    {{Login.user_2}}
+    {{Login.user}}
     <p class="basic_info_title">アカウント設定</p>
 
     <div class="basic_info_area">
@@ -8,7 +8,7 @@
         <dl>
           <dt>ニックネーム</dt>
           <dd>
-            <p>{{ Login.user_2.nickname }}</p>
+            <p>{{ Login.user.nickname }}</p>
           </dd>
         </dl>
         <basicButton cls="account_edit_btn" @emitClick="editBasicData">ニックネームを編集</basicButton>

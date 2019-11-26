@@ -5,12 +5,12 @@
       <div class="xxx">
         <div class="user_icon">
           <div class="icon_edge">
-            <userIcon cls="user_page_icon" :url="Login.user_2.user_icon" />
+            <userIcon cls="user_page_icon" :url="Login.user.user_icon" />
           </div>
         </div>
       </div>
       <div class="mypage_header">
-        <p class="nickname">{{ Login.user_2.nickname }} さん</p>
+        <p class="nickname">{{ Login.user.nickname }} さん</p>
         <div class="mail_and_menu">
           <span class="mail_area">
             <iconAndTextButton cls="mail" :text="null" icon="mail_gry" />
@@ -68,11 +68,11 @@ export default {
     const r = Math.floor(Math.random() * 5) + 1;
     this.image_path = `/mypageImage/${r}.jpg`;
 
-    this.$store.commit("auth/getUser_1", data.data.customer);
+    this.$store.commit("auth/getuser", data.data.customer);
     this.user_data = data.data.customer;
     this.$store.dispatch(
       "farmers/getFollowerAction",
-      this.Login.user_2.user_id
+      this.Login.user.user_id
     );
   },
   methods: {

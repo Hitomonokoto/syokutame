@@ -29,7 +29,12 @@
       <dl>
         <dt>メールアドレス</dt>
         <dd>
-          <basicInput cls="regist_type2" type="email" v-model="email" />
+          <basicInput
+            cls="regist_type2"
+            type="email"
+            v-model="email"
+            id="email"
+          />
         </dd>
       </dl>
       <dl>
@@ -79,7 +84,7 @@ export default {
   },
 
   methods: {
-    signUp() {
+    async signUp() {
       // 未入力チェック
       if (
         !this.nickname ||
@@ -117,7 +122,29 @@ export default {
         return;
       }
 
-      this.$store.dispatch("auth/signUpAction", this.signUpData);
+      // サインアップ処理
+      const result = await this.$store.dispatch("auth/signUpAction", {
+        nickname: this.nickname,
+        email: this.email,
+        password: this.password
+      });
+
+      // 結果処理
+      if (result.code == "auth/email-already-in-use") {
+        this.errorType = 6;
+        this.emailInit();
+        this.passwordInit();
+      } else {
+        this.errorType = 7;
+        this.emailInit();
+        this.passwordInit();
+      }
+    },
+
+    emailInit() {
+      // メールアドレス入力フォーム初期化
+      document.getElementById("email").value = "";
+      this.email = "";
     },
 
     passwordInit() {

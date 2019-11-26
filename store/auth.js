@@ -4,53 +4,90 @@ require('firebase/firestore');
 const db = firebase.firestore();
 
 export const state = () => ({
-  token: null,
-  user_1: null,
-  user_2: null,
-  user_id: null,
-  path: null
+  uid: null,
+  user: null
 })
 
 export const mutations = {
-  getToken(state, data) {
-    state.token = data;
+  getUid(state, data) {
+    state.uid = data;
   },
-  getUser_1(state, data) {
-    state.user_1 = data;
-  },
-  getUser_2(state, data) {
-    state.user_2 = data;
-    state.user_id = data.user_id;
-  },
-  logout(state) {
-    state.token = null;
-    state.user_1 = null;
-    state.user_2 = null;
-    state.user_id = null;
-  },
-  getPath(state, data) {
-    state.path = data;
+  getUser(state, data) {
+    state.user = data;
   }
 }
 
 export const actions = {
-  // 新規ユーザー登録
-  async createUserAction(context, payload) {
-    const docRef = await db.collection("users").doc(payload.user_id);
-    docRef.set({
-      user_id: payload.user_id,
-      user_icon: "/samplein.jpg",
-      nickname: payload.nickname,
-      user_type: 0,
-      business_id: null
+
+  // サインイン
+  signInAction(context, signInData) {
+    return new Promise(resolve => {
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(signInData.email, signInData.password)
+        .then(user => {
+          context.dispatch("getUserAction", user.user.uid)
+            .then(() => {
+              console.log("サインインに成功しました！");
+              this.$router.push("/");
+            })
+        })
+        .catch(error => {
+          console.log(error.message);
+          resolve(false);
+        })
     });
   },
 
+  // サインアップ
+  signUpAction(context, signUpData) {
+    return new Promise(resolve => {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
+        .then(user => {
+          context.dispatch("createUserDataAction", {
+            uid: user.user.uid,
+            nickname: signUpData.nickname
+          })
+            .then(() => {
+              console.log("サインアップに成功しました！");
+            })
+        })
+        .catch(error => {
+          console.log("サインインに失敗しました！");
+          console.log(error.message);
+          resolve(error);
+        });
+    });
+  },
+
+  // ユーザーデータをデータベースに登録
+  createUserDataAction(context, userData) {
+    const docRef = db.collection("users").doc(userData.uid);
+    docRef.set({
+      nickname: userData.nickname,
+      user_icon: "/samplein.jpg",
+      cmn: 0,
+      contentful_id: null
+    });
+    context.commit("getUid", {
+      uid: userData.uid
+    });
+    context.commit("getuser", {
+      nickname: userData.nickname,
+      user_icon: "/samplein.jpg",
+      cmn: 0,
+      contentful_id: null
+    });
+    this.$router.push("/");
+  },
+
   // ユーザー情報を取得
-  async getUserAction_2(context, payload) {
-    const user = await db.collection('users').doc(payload).get();
-    console.log(user.data())
-    context.commit('getUser_2', user.data());
+  async getUserAction(context, uid) {
+    const user = await db.collection('users').doc(uid).get();
+    context.commit("getUid", uid);
+    context.commit('getUser', user.data());
   },
 
   // ニックネームを変更
@@ -60,37 +97,7 @@ export const actions = {
       nickname: payload.new_nickname
     });
     context.dispatch("getUserAction_2", payload.user_id)
-  },
-
-  // サインイン
-  signInAction(context, signInData) {
-    return new Promise(resolve => {
-      firebase
-        .auth()
-        .signInWithEmailAndPassword(signInData.email, signInData.password)
-        .then(user => {
-          console.log("サインインに成功しました！");
-          resolve(user.user.uid);
-        })
-        .catch(error => {
-          console.log("サインインに失敗しました！");
-          resolve(error);
-        })
-    });
-
-
-  },
-
-  // サインアップ
-  signUpAction(context, signUpData) {
-    firebase.auth().createUserWithEmailAndPassword(signUpData.email, signUpData.password).then(user => {
-      console.log("サインアップに成功しました！");
-      console.log(user.user.uid);
-    }).catch(error => {
-      console.log("サインアップに失敗しました！");
-      console.log(error.code);
-      console.log(error.message);
-    });
   }
+
 }
 

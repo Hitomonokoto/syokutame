@@ -1,7 +1,7 @@
 <template>
   <div class="comments">
     <div v-if="this.auth.token" class="send_comment">
-      <userIcon cls="send_comment_icon" :url="auth.user_2.user_icon" />
+      <userIcon cls="send_comment_icon" :url="auth.user.user_icon" />
       <textarea
         v-model="new_comment"
         class="write_comment"
@@ -86,10 +86,10 @@ export default {
         return;
       }
       this.$store.dispatch("timeline/commentAction", {
-        user_id: this.auth.user_2.user_id,
+        user_id: this.auth.user.user_id,
         business_id: this.business_id,
-        user_icon: this.auth.user_2.user_icon,
-        name: this.auth.user_2.nickname,
+        user_icon: this.auth.user.user_icon,
+        name: this.auth.user.nickname,
         post_id: this.post_id,
         text: this.new_comment,
         timeline_type: this.timeline_type

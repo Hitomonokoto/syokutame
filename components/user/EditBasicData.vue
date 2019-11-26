@@ -49,10 +49,10 @@ export default {
   },
   data() {
     return {
-      lastName: this.auth.user_1.lastName,
-      firstName: this.auth.user_1.firstName,
-      email: this.auth.user_1.email,
-      user_id: this.auth.user_2.user_id
+      lastName: this.auth.user.lastName,
+      firstName: this.auth.user.firstName,
+      email: this.auth.user.email,
+      user_id: this.auth.user.user_id
     };
   },
   methods: {

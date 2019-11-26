@@ -2,7 +2,7 @@
   <div class="post">
     <div class="post_header">
       <div class="user">
-        <userIcon cls="post_form_icon" :url="auth.user_2.user_icon" />
+        <userIcon cls="post_form_icon" :url="auth.user.user_icon" />
       </div>
       <div class="actions">
         <basicButton cls="back_btn" @emitClick="back">戻る</basicButton>
@@ -107,11 +107,11 @@ export default {
       // }
 
       this.$store.dispatch("timeline/PostAction", {
-        user_id: this.auth.user_2.user_id,
-        business_id: this.auth.user_2.business_id,
-        farmer_id: this.auth.user_2.farmer_id,
-        name: this.auth.user_2.nickname,
-        user_icon: this.auth.user_2.user_icon,
+        user_id: this.auth.user.user_id,
+        business_id: this.auth.user.business_id,
+        farmer_id: this.auth.user.farmer_id,
+        name: this.auth.user.nickname,
+        user_icon: this.auth.user.user_icon,
         title: this.title,
         // text: text_html,
         text: this.text,

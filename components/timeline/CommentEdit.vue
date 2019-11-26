@@ -37,8 +37,8 @@ export default {
         return;
       }
       this.$store.dispatch("timeline/commentAction", {
-        user_id: this.auth.user_2.user_id,
-        name: this.auth.user_2.nickname,
+        user_id: this.auth.user.user_id,
+        name: this.auth.user.nickname,
         post_id: this.post_id,
         text: this.comment
       });

@@ -6,11 +6,11 @@
       <p class="home_sub_title">日々を楽しむ</p>
       <hr class="line" />
     </div>
-    <div class="post_btn" v-if="isPost_btn && auth.user_2">
+    <div class="post_btn" v-if="isPost_btn && auth.user">
       <div v-if="farmers.farmer">
         <basicButton
           cls="post_btn"
-          v-if="auth.user_2.farmer_id == farmers.farmer.sys.id"
+          v-if="auth.user.farmer_id == farmers.farmer.sys.id"
           @emitClick="post"
         >Diaryを書く</basicButton>
       </div>

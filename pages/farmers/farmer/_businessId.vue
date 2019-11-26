@@ -79,7 +79,7 @@ export default {
     if (this.Login.token) {
       await this.$store.dispatch(
         "farmers/getFollowerAction",
-        this.Login.user_2.user_id
+        this.Login.user.user_id
       );
       if (this.Farmers.follower.indexOf(this.Farmers.farmer.sys.id) >= 0) {
         this.isFollow = true;
@@ -94,13 +94,13 @@ export default {
       if (this.Farmers.follower.indexOf(this.Farmers.farmer.sys.id) >= 0) {
         this.$store.dispatch("farmers/quitFollowAction", {
           farmer_id: this.Farmers.farmer.sys.id,
-          user_id: this.Login.user_2.user_id
+          user_id: this.Login.user.user_id
         });
         this.isFollow = false;
       } else {
         this.$store.dispatch("farmers/followAction", {
           farmer_id: this.Farmers.farmer.sys.id,
-          user_id: this.Login.user_2.user_id
+          user_id: this.Login.user.user_id
         });
         this.isFollow = true;
       }

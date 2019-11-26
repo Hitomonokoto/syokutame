@@ -47,15 +47,20 @@ export default {
   },
   methods: {
     async signIn() {
+      // 未入力チェック
+      if (!this.email || !this.password) {
+        this.errorType = 1;
+        return;
+      }
+
+      // サインイン処理
       const result = await this.$store.dispatch("auth/signInAction", {
         email: this.email,
         password: this.password
       });
 
-      // エラー処理
-      if (result.code) {
-        console.log(result.code);
-        console.log(result.message);
+      // 結果処理
+      if (!result) {
         this.errorType = 5;
         this.formInit();
       }

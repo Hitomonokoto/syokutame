@@ -70,8 +70,8 @@ export default {
       this.title = this.info.info_data.title;
       this.message = this.info.info_data.message;
     } else if (this.auth.token) {
-      this.name = this.auth.user_2.nickname;
-      this.email = this.auth.user_1.email;
+      this.name = this.auth.user.nickname;
+      this.email = this.auth.user.email;
     }
   },
   methods: {

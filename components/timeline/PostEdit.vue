@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <div class="user">
-      <userIcon cls="post_edit_icon" :url="auth.user_2.user_icon" />
+      <userIcon cls="post_edit_icon" :url="auth.user.user_icon" />
       <div class="name_and_back">
         <p class="nickname">{{post_data.name}}</p>
         <div class="actions">

@@ -29,10 +29,10 @@
         <hr class="line" />
       </div>
 
-      <div class="post_btn" v-if="auth.user_2">
+      <div class="post_btn" v-if="auth.user">
         <basicButton
           cls="post_btn"
-          v-if="auth.user_2.user_type == 1"
+          v-if="auth.user.user_type == 1"
           @emitClick="post"
         >Diaryを書く</basicButton>
       </div>
@@ -95,7 +95,7 @@ export default {
   },
   created() {
     if (this.auth.token) {
-      this.$store.dispatch("timeline/getLikesAction", this.auth.user_2.user_id);
+      this.$store.dispatch("timeline/getLikesAction", this.auth.user.user_id);
     }
   },
   methods: {

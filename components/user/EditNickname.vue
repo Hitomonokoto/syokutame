@@ -31,7 +31,7 @@ export default {
   data() {
     return {
       new_nickname: null,
-      user_id: this.auth.user_2.id
+      user_id: this.auth.user.id
     };
   },
   methods: {
@@ -41,7 +41,7 @@ export default {
       }
       this.$store.dispatch("auth/changeNicknameAction", {
         new_nickname: this.new_nickname,
-        user_id: this.auth.user_2.id
+        user_id: this.auth.user.id
       });
       this.$emit("emitClick");
     },
