@@ -33,9 +33,6 @@ import linkButton from "~/components/LinkButton";
 import basicInput from "~/components/BasicInput";
 import ErrorMessage from "~/components/ErrorMessage";
 
-// その他
-import Cookies from "universal-cookie";
-
 export default {
   components: { linkButton, basicInput, ErrorMessage },
   data() {
@@ -63,6 +60,7 @@ export default {
       if (!result) {
         this.errorType = 5;
         this.formInit();
+      } else {
       }
     },
 

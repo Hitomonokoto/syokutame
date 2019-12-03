@@ -1,16 +1,16 @@
 <template>
   <main>
     <mainImage cls="basic" :url="image_path" />
-    <div class="profile_area" v-if="isData">
+    <div class="profile_area">
       <div class="xxx">
         <div class="user_icon">
           <div class="icon_edge">
-            <userIcon cls="user_page_icon" :url="Login.user.user_icon" />
+            <userIcon cls="user_page_icon" :url="User.user_icon" />
           </div>
         </div>
       </div>
       <div class="mypage_header">
-        <p class="nickname">{{ Login.user.nickname }} さん</p>
+        <p class="nickname">{{ User.nickname }} さん</p>
         <div class="mail_and_menu">
           <span class="mail_area">
             <iconAndTextButton cls="mail" :text="null" icon="mail_gry" />
@@ -25,7 +25,7 @@
     <div class="mypage_menu_area">
       <mypageMenu v-if="isMenu" @emitEditProfile="editProfile" />
     </div>
-    <profileData v-if="isProfileData" :user_data="user_data" />
+    <profileData v-if="isProfileData" :user_data="User" />
     <follower v-if="isFollower" />
     <basicButton cls="logout_btn" @emitClick="logout">ログアウト</basicButton>
   </main>
@@ -42,7 +42,7 @@ import profileData from "~/components/user/ProfileData";
 import userIcon from "~/components/UserIcon";
 
 // その他
-import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 import Cookies from "universal-cookie";
 
 export default {
@@ -56,7 +56,6 @@ export default {
   },
   data() {
     return {
-      user_data: {},
       image_path: null,
       isProfileData: false,
       isFollower: true,
@@ -67,13 +66,7 @@ export default {
   async created() {
     const r = Math.floor(Math.random() * 5) + 1;
     this.image_path = `/mypageImage/${r}.jpg`;
-
-    this.$store.commit("auth/getuser", data.data.customer);
-    this.user_data = data.data.customer;
-    this.$store.dispatch(
-      "farmers/getFollowerAction",
-      this.Login.user.user_id
-    );
+    // this.$store.dispatch("farmers/getFollowerAction", this.User.user_id);
   },
   methods: {
     editProfile() {
@@ -97,14 +90,9 @@ export default {
       }
     }
   },
-  computed: mapState({
-    Login: state => state.auth,
-    Farmers: state => state.farmers
-  }),
-  watch: {
-    user_data() {
-      this.isData = true;
-    }
+  computed: {
+    ...mapGetters("auth", ["Uid", "User"]),
+    ...mapGetters("farmers", ["Farmers"])
   },
   head() {
     return {

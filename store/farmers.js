@@ -10,7 +10,12 @@ export const state = () => ({
     farmer: null,
     follower: [],
     followerData: []
-})
+});
+
+export const getter = () => ({
+    farmers: state => state.farmers,
+    farmer: state => state.farmer
+});
 
 export const mutations = {
     getFarmers(state, data) {

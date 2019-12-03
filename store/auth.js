@@ -1,12 +1,19 @@
 import firebase from "~/plugins/firebase";
+import Cookies from "universal-cookie";
 require("firebase/auth");
 require('firebase/firestore');
 const db = firebase.firestore();
+const cookies = new Cookies();
 
 export const state = () => ({
-  uid: null,
-  user: null
-})
+  uid: "",
+  user: {}
+});
+
+export const getters = {
+  Uid: state => state.uid,
+  User: state => state.user
+};
 
 export const mutations = {
   getUid(state, data) {
@@ -15,7 +22,7 @@ export const mutations = {
   getUser(state, data) {
     state.user = data;
   }
-}
+};
 
 export const actions = {
 
@@ -27,12 +34,12 @@ export const actions = {
         .signInWithEmailAndPassword(signInData.email, signInData.password)
         .then(user => {
           context.dispatch("getUserAction", user.user.uid)
-            .then(() => {
-              console.log("サインインに成功しました！");
-              this.$router.push("/");
-            })
+          cookies.set("token", user.user.uid);
+          this.$router.push("/");
+          console.log("サインインに成功しました！");
         })
         .catch(error => {
+          console.log("サインインに失敗しました！");
           console.log(error.message);
           resolve(false);
         })
@@ -52,12 +59,14 @@ export const actions = {
           })
             .then(() => {
               console.log("サインアップに成功しました！");
+              cookies.set("token", user.user.uid, { expires: 7 });
+              this.$router.push("/");
             })
         })
         .catch(error => {
-          console.log("サインインに失敗しました！");
+          console.log("サインアップに失敗しました！");
           console.log(error.message);
-          resolve(error);
+          resolve(false);
         });
     });
   },
@@ -74,7 +83,7 @@ export const actions = {
     context.commit("getUid", {
       uid: userData.uid
     });
-    context.commit("getuser", {
+    context.commit("getUser", {
       nickname: userData.nickname,
       user_icon: "/samplein.jpg",
       cmn: 0,
@@ -98,6 +107,5 @@ export const actions = {
     });
     context.dispatch("getUserAction_2", payload.user_id)
   }
-
-}
+};
 

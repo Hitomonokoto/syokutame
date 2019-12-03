@@ -63,7 +63,7 @@ export default {
       if (this.auth.token) {
         this.$router.push("/user");
       } else {
-        this.$router.push("/auth");
+        this.$router.push("/uid");
       }
     }
   },

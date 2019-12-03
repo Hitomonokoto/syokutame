@@ -67,6 +67,9 @@ export default {
   fontawesome: {
     component: 'fa'
   },
+  router: {
+    middleware: "login"
+  },
   /*
   ** Build configuration
   */

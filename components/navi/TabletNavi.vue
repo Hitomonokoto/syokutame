@@ -57,10 +57,10 @@ export default {
   },
   methods: {
     mypage() {
-      if (this.auth.token) {
+      if (this.auth.uid) {
         this.$router.push("/user");
       } else {
-        this.$router.push("/auth");
+        this.$router.push("/signIn");
       }
     }
   },
