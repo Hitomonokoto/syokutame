@@ -30,9 +30,9 @@ export default {
   box-shadow: 0px 0px 6px #d1d1d1;
 }
 .top_img {
-  width: 70%;
+  width: 100%;
   display: block;
-  margin: 80px 0;
+  margin-bottom: 50px;
   box-shadow: 0px 0px 6px #d1d1d1;
 }
 @media screen and (max-width: 960px) {

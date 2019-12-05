@@ -1,43 +1,22 @@
 <template>
   <div class="container">
-    <div class="pc_navi_area">
-      <pcNavi />
-    </div>
-    <div class="tablet_navi_area">
-      <tabletNavi />
-    </div>
-    <div class="mobile_navi_area">
-      <mobileNavi />
-    </div>
+    <GlobalNavigation />
     <nuxt />
   </div>
 </template>
 
 <script>
-import pcNavi from "~/components/navi/PcNavi";
-import tabletNavi from "~/components/navi/TabletNavi";
-import mobileNavi from "~/components/navi/MobileNavi";
+import GlobalNavigation from "~/components/navi/globalNavigation";
 export default {
   components: {
-    pcNavi,
-    tabletNavi,
-    mobileNavi
+    GlobalNavigation
   },
   data() {
     return {
       isBtn: true
     };
   },
-  methods: {
-    openNavi() {
-      this.isBtn = false;
-      document.getElementById("mobile_navi").style.display = "inline";
-    },
-    closeNavi() {
-      this.isBtn = true;
-      document.getElementById("mobile_navi").style.display = "none";
-    }
-  }
+  methods: {}
 };
 </script>
 
@@ -59,15 +38,7 @@ p {
   width: 100%;
   background-color: rgb(255, 255, 250);
 }
-.pc_navi_area {
-  width: 200px;
-}
-.tablet_navi_area {
-  display: none;
-}
-.mobile_navi_area {
-  display: none;
-}
+/* 
 @media screen and (max-width: 960px) {
   .container {
     flex-direction: column;
@@ -86,25 +57,21 @@ p {
   .mobile_navi_area {
     display: block;
   }
-}
+} */
 
 /* これより下は全ページ共通のCSS */
 
 main {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
-@media screen and (max-width: 960px) {
+@media screen and (min-width: 960px) {
   main {
-    margin-top: 150px;
-  }
-}
-@media screen and (max-width: 560px) {
-  main {
-    margin-top: 50px;
-    margin-bottom: 50px;
+    margin-left: 250px;
+    margin-bottom: 0px;
   }
 }
 .page_title {

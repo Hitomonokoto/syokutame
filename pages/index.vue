@@ -4,7 +4,7 @@
     <div class="beginner_area">
       <nuxt-link to="/aboutMyFarm">
         <iconAndTextButton
-          v-if="!auth.token"
+          v-if="!Uid"
           cls="top_beginner_btn"
           text="初めての方はこちら"
           icon="beginner_w"
@@ -29,12 +29,8 @@
         <hr class="line" />
       </div>
 
-      <div class="post_btn" v-if="auth.user">
-        <basicButton
-          cls="post_btn"
-          v-if="auth.user.user_type == 1"
-          @emitClick="post"
-        >Diaryを書く</basicButton>
+      <div class="post_btn" v-if="Uid">
+        <basicButton cls="post_btn" @emitClick="post">Diaryを書く</basicButton>
       </div>
       <timeline
         :posts="timeline.posts"
@@ -68,6 +64,7 @@ import postEdit from "~/components/timeline/PostEdit";
 
 // その他
 import { mapState } from "vuex";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -129,11 +126,14 @@ export default {
       this.post_data = "";
     }
   },
-  computed: mapState({
-    products: state => state.products,
-    auth: state => state.auth,
-    timeline: state => state.timeline
-  }),
+  computed: {
+    ...mapGetters("auth", ["Uid", "User"]),
+    ...mapState({
+      products: state => state.products,
+      auth: state => state.auth,
+      timeline: state => state.timeline
+    })
+  },
   head() {
     return {
       title: "ショクタメ"
