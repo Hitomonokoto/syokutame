@@ -1,8 +1,6 @@
-import firebase from "~/plugins/firebase";
+import { firestore, fireauth } from "~/plugins/firebase";
+
 import Cookies from "universal-cookie";
-require("firebase/auth");
-require('firebase/firestore');
-const db = firebase.firestore();
 const cookies = new Cookies();
 
 export const state = () => ({
@@ -29,8 +27,7 @@ export const actions = {
   // サインイン
   signInAction(context, signInData) {
     return new Promise(resolve => {
-      firebase
-        .auth()
+      fireauth
         .signInWithEmailAndPassword(signInData.email, signInData.password)
         .then(user => {
           context.dispatch("getUserAction", user.user.uid)
@@ -49,8 +46,7 @@ export const actions = {
   // サインアップ
   signUpAction(context, signUpData) {
     return new Promise(resolve => {
-      firebase
-        .auth()
+      fireauth
         .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
         .then(user => {
           context.dispatch("createUserDataAction", {
@@ -73,7 +69,7 @@ export const actions = {
 
   // ユーザーデータをデータベースに登録
   createUserDataAction(context, userData) {
-    const docRef = db.collection("users").doc(userData.uid);
+    const docRef = firestore.collection("users").doc(userData.uid);
     docRef.set({
       nickname: userData.nickname,
       user_icon: "/samplein.jpg",
@@ -94,14 +90,14 @@ export const actions = {
 
   // ユーザー情報を取得
   async getUserAction(context, uid) {
-    const user = await db.collection('users').doc(uid).get();
+    const user = await firestore.collection('users').doc(uid).get();
     context.commit("getUid", uid);
     context.commit('getUser', user.data());
   },
 
   // ニックネームを変更
   async changeNicknameAction(context, payload) {
-    const docRef = await db.collection("users").doc(payload.user_id);
+    const docRef = await firestore.collection("users").doc(payload.user_id);
     docRef.update({
       nickname: payload.new_nickname
     });

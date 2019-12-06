@@ -1,6 +1,4 @@
-import firebase from "~/plugins/firebase";
-require('firebase/firestore');
-const db = firebase.firestore();
+import firestore from "~/plugins/firebase";
 
 export const state = () => ({
   info_data: ''
@@ -14,7 +12,7 @@ export const mutations = {
 
 export const actions = {
   async unsubscribeAction(context, data) {
-    const docRef = await db.collection("unsubscribe").doc();
+    const docRef = await firestore.collection("unsubscribe").doc();
     const setAda = docRef.set({
       user_id: data.user_id,
       message: data.message

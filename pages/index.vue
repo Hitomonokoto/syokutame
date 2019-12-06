@@ -63,8 +63,7 @@ import post from "~/components/timeline/Post";
 import postEdit from "~/components/timeline/PostEdit";
 
 // その他
-import { mapState } from "vuex";
-import { mapGetters } from "vuex";
+import { mapState, mapGetters } from "vuex";
 
 export default {
   components: {
@@ -91,7 +90,7 @@ export default {
     await store.dispatch("products/getPickupProductsAction");
   },
   created() {
-    if (this.auth.token) {
+    if (this.Uid) {
       this.$store.dispatch("timeline/getLikesAction", this.auth.user.user_id);
     }
   },
@@ -130,7 +129,6 @@ export default {
     ...mapGetters("auth", ["Uid", "User"]),
     ...mapState({
       products: state => state.products,
-      auth: state => state.auth,
       timeline: state => state.timeline
     })
   },

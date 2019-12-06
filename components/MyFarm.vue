@@ -46,9 +46,7 @@
 
 
 <script>
-import firebase from "~/plugins/firebase";
-require("firebase/firestore");
-const db = firebase.firestore();
+import firestore from "~/plugins/firebase";
 
 export default {
   props: {

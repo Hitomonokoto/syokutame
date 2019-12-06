@@ -1,4 +1,7 @@
 const firebase = require('firebase/app');
+require("firebase/auth");
+require('firebase/firestore');
+require('firebase/storage');
 
 const config = {
     apiKey: process.env.apiKey,
@@ -14,4 +17,6 @@ if (!firebase.apps.length) {
     firebase.initializeApp(config)
 }
 
-export default firebase
+export const fireauth = firebase.firestore();
+export const firestore = firebase.firestore();
+export const firestorage = firebase.storage();

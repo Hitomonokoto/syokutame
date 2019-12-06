@@ -1,9 +1,5 @@
 import client from "~/plugins/contentful";
-import firebase from "~/plugins/firebase";
-
-require('firebase/firestore');
-
-const db = firebase.firestore();
+import firestore from "~/plugins/firebase";
 
 export const state = () => ({
     farmers: [],
@@ -61,20 +57,20 @@ export const actions = {
     },
     // 生産者をフォローする
     async followAction(context, payload) {
-        await db.collection("users").doc(payload.user_id).collection("follower").doc(payload.farmer_id).set({
+        await firestore.collection("users").doc(payload.user_id).collection("follower").doc(payload.farmer_id).set({
             farmer_id: payload.farmer_id
         });
         context.dispatch('getFollowerAction', payload.user_id);
     },
     // フォローをやめる
     async quitFollowAction(context, payload) {
-        await db.collection("users").doc(payload.user_id).collection("follower").doc(payload.farmer_id).delete();
+        await firestore.collection("users").doc(payload.user_id).collection("follower").doc(payload.farmer_id).delete();
         context.dispatch('getFollowerAction', payload.user_id);
     },
     // フォローしている生産者を取得
     async getFollowerAction(context, payload) {
         let follower = [];
-        const followerSnapShots = await db.collection("users").doc(payload).collection("follower").get();
+        const followerSnapShots = await firestore.collection("users").doc(payload).collection("follower").get();
         await followerSnapShots.forEach(doc => {
             follower.push(doc.data().farmer_id);
         });
