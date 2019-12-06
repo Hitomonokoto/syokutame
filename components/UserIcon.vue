@@ -49,6 +49,19 @@ export default {
   border-radius: 10%;
   margin-right: 10px;
 }
+
+.global_nav_icon {
+  width: 40px;
+  border-radius: 10%;
+  border-radius: 50%;
+  margin: 5px;
+}
+@media screen and (min-width: 960px) {
+  .global_nav_icon {
+    margin: 5px 10px 5px 20px;
+  }
+}
+
 .commenter_icon {
   width: 50px;
   border-radius: 50%;

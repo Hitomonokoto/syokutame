@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GlobalNavigation from "~/components/navi/globalNavigation";
+import GlobalNavigation from "~/components/navigation/globalNavigation";
 export default {
   components: {
     GlobalNavigation
