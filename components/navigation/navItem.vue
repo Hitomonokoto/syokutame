@@ -1,28 +1,28 @@
 <template>
   <nuxt-link
     class="nav_link_area"
-    :class="{ hover_active: !isOn }"
+    :class="{ hover_active: path !== linkPath }"
     :to="linkPath"
   >
     <img
-      v-if="!isOn"
+      v-if="path !== linkPath"
       class="icon icon_black"
       :src="'/naviIcon/'+iconBlack+'.svg'"
       alt
     />
     <img
-      v-if="!isOn"
+      v-if="path !== linkPath"
       class="icon icon_white"
       :src="'/naviIcon/'+iconWhite+'.svg'"
       alt
     />
     <img
-      v-if="isOn"
+      v-if="path === linkPath"
       class="icon icon_green"
       :src="'/naviIcon/'+iconGreen+'.svg'"
       alt
     />
-    <p class="text" :class="{click_active: isOn}">{{ text }}</p>
+    <p class="text" :class="{click_active: path === linkPath}">{{ text }}</p>
   </nuxt-link>
 </template>
 
@@ -47,14 +47,12 @@ export default {
   },
   data() {
     return {
-      isOn: false,
       path: this.$route.path
     };
   },
   watch: {
     $route() {
       this.path = this.$route.path;
-      this.isOn = this.path === this.linkPath ? true : false;
     }
   }
 };

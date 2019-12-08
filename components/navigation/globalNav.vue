@@ -3,13 +3,14 @@
     <div class="top_nav">
       <nuxt-link class="top_nav_left" to="/">
         <UserIcon cls="global_nav_icon" url="samplein.jpg" />
-        <UserName cls="global_nav_user_name" />
+        <UserName cls="global_nav_user_name" name="永田悠飛" />
       </nuxt-link>
       <p class="title">{{ getTitle }}</p>
       <div class="top_nav_right">
         <img class="hamburger" src="naviIcon/menu_gry.svg" alt />
       </div>
     </div>
+
     <div class="bottom_nav">
       <NavItem
         linkPath="/"
@@ -120,8 +121,8 @@ export default {
 }
 
 .hamburger {
-  width: 30px;
-  margin: 10px;
+  width: 20px;
+  margin: 15px;
 }
 
 .bottom_nav {
@@ -145,6 +146,10 @@ export default {
   .top_nav_left {
     width: 250px;
     border-right: 1px solid lightgray;
+  }
+
+  .top_nav_right {
+    border-left: 1px solid lightgray;
   }
 
   .bottom_nav {

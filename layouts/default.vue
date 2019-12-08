@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <GlobalNavigation />
+    <GlobalNav />
     <nuxt />
   </div>
 </template>
 
 <script>
-import GlobalNavigation from "~/components/navigation/globalNavigation";
+import GlobalNav from "~/components/navigation/globalNav";
 export default {
   components: {
-    GlobalNavigation
+    GlobalNav
   },
   data() {
     return {
@@ -33,31 +33,14 @@ export default {
 p {
   color: black;
 }
+img {
+  display: block;
+}
 .container {
   display: flex;
   width: 100%;
   background-color: rgb(255, 255, 250);
 }
-/* 
-@media screen and (max-width: 960px) {
-  .container {
-    flex-direction: column;
-  }
-  .pc_navi_area {
-    display: none;
-  }
-  .tablet_navi_area {
-    display: block;
-  }
-}
-@media screen and (max-width: 560px) {
-  .tablet_navi_area {
-    display: none;
-  }
-  .mobile_navi_area {
-    display: block;
-  }
-} */
 
 /* これより下は全ページ共通のCSS */
 
@@ -68,23 +51,32 @@ main {
   margin-top: 50px;
   margin-bottom: 50px;
 }
+
+.subtitle {
+  width: 100%;
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.description {
+  width: 100%;
+  font-size: 14px;
+  padding: 20px;
+}
+
 @media screen and (min-width: 960px) {
   main {
     margin-left: 250px;
     margin-bottom: 0px;
   }
 }
-.page_title {
-  margin-top: 50px;
-  margin-bottom: 20px;
-}
-.description {
-  margin-bottom: 50px;
-  text-align: center;
-}
+
 .home_title {
   margin-bottom: 10px;
 }
+
 .follower_title {
   margin-bottom: 20px;
 }

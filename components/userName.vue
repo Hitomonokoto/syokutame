@@ -1,5 +1,5 @@
 <template>
-  <p :class="cls">永田悠飛</p>
+  <p :class="cls">{{ name }}</p>
 </template>
 
 
@@ -8,6 +8,9 @@
 export default {
   props: {
     cls: {
+      type: String
+    },
+    name: {
       type: String
     }
   }
@@ -18,6 +21,17 @@ export default {
 .global_nav_user_name {
   display: none;
   margin: auto 0px;
+}
+
+.gifts_page_farmer_name {
+  margin-left: 50px;
+  padding: 5px 0px;
+  font-size: 14px;
+}
+
+.gifts_page_gift_name {
+  text-align: center;
+  padding: 5px 0px;
 }
 
 @media screen and (min-width: 560px) {

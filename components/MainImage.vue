@@ -27,13 +27,13 @@ export default {
   width: 80%;
   display: block;
   margin: 30px 0;
-  box-shadow: 0px 0px 6px #d1d1d1;
+  /* box-shadow: 0px 0px 6px #d1d1d1; */
 }
 .top_img {
   width: 100%;
   display: block;
   margin-bottom: 50px;
-  box-shadow: 0px 0px 6px #d1d1d1;
+  /* box-shadow: 0px 0px 6px #d1d1d1; */
 }
 @media screen and (max-width: 960px) {
   .basic {

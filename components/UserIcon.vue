@@ -18,9 +18,21 @@ export default {
 </script>
 
 <style scoped>
-.basic {
-  display: block;
+.global_nav_icon,
+.gifts_page_farmer_icon {
+  border-radius: 50%;
 }
+
+/* border-radius: 5px; */
+
+.gifts_page_farmer_icon {
+  position: absolute;
+  top: 5px;
+  width: 50px;
+  margin-right: 5px;
+  border: 5px solid white;
+}
+
 .mydata_icon {
   width: 80px;
   border-radius: 5px;
@@ -52,8 +64,6 @@ export default {
 
 .global_nav_icon {
   width: 40px;
-  border-radius: 10%;
-  border-radius: 50%;
   margin: 5px;
 }
 @media screen and (min-width: 960px) {
