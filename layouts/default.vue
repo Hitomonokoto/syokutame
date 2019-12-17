@@ -52,7 +52,7 @@ main {
   margin-bottom: 50px;
 }
 
-.subtitle {
+.sub_title {
   width: 100%;
   font-size: 16px;
   font-weight: bold;

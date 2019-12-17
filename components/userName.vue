@@ -29,7 +29,8 @@ export default {
   font-size: 14px;
 }
 
-.gifts_page_gift_name {
+.gifts_page_gift_name,
+.farmers_page_farm_name {
   text-align: center;
   padding: 5px 0px;
 }

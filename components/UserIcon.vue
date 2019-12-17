@@ -23,7 +23,9 @@ export default {
   border-radius: 50%;
 }
 
-/* border-radius: 5px; */
+.farmers_page_farmer_icon {
+  border-radius: 5px;
+}
 
 .gifts_page_farmer_icon {
   position: absolute;
@@ -31,6 +33,10 @@ export default {
   width: 50px;
   margin-right: 5px;
   border: 5px solid white;
+}
+
+.farmers_page_farmer_icon {
+  width: 100%;
 }
 
 .mydata_icon {

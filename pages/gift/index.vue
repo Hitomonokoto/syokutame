@@ -1,6 +1,6 @@
 <template>
   <main>
-    <p class="subtitle">カラダが喜び、心が笑う贈り物。</p>
+    <p class="sub_title">カラダが喜び、心が笑う贈り物。</p>
     <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
 
     <iconAndTextButton cls="about_gift_btn" text="ギフトとは" icon="gift_pink" />
@@ -22,11 +22,6 @@
             :name="product.fields.farmName"
           />
         </div>
-        <!-- <UserName
-          cls="gifts_page_gift_name"
-          :name="product.fields.productName"
-        />-->
-
         <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
         <UserName
           cls="gifts_page_gift_name"
@@ -86,20 +81,19 @@ export default {
   .gifts {
     display: flex;
     flex-flow: row wrap;
+    padding: 10px;
   }
 
   .gift {
     width: 50%;
     border: none;
+    padding: 10px;
   }
 }
 
 @media screen and (min-width: 960px) {
-  .gifts {
-    justify-content: space-between;
-  }
   .gift {
-    width: 33.3%;
+    width: 33.33%;
   }
 }
 </style>
