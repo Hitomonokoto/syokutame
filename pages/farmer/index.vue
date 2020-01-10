@@ -1,7 +1,9 @@
 <template>
   <main>
-    <p class="sub_title">豊さを繋ぐひと</p>
-    <p class="description">価値だけでは表現することの出来ない"モノの価値"。夢を描く素敵な方々を紹介致します。</p>
+    <section class="page_info">
+      <p class="sub_title">豊さを繋ぐひと</p>
+      <p class="description">価値だけでは表現することの出来ない"モノの価値"。夢を描く素敵な方々を紹介致します。</p>
+    </section>
     <div class="farmers">
       <nuxt-link
         v-for="(farmer, index) in this.farmers.farmers"

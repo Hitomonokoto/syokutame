@@ -52,18 +52,35 @@ main {
   margin-bottom: 50px;
 }
 
+.page_info {
+  width: 100%;
+  padding: 20px;
+}
+
 .sub_title {
   width: 100%;
   font-size: 16px;
   font-weight: bold;
-  padding-top: 20px;
-  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
 .description {
   width: 100%;
   font-size: 14px;
+}
+
+.about_button {
+  width: 100%;
   padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (min-width: 560px) {
+  .about_button {
+    display: flex;
+    justify-content: flex-end;
+  }
 }
 
 @media screen and (min-width: 960px) {

@@ -1,8 +1,10 @@
 <template>
-  <div class="basic" :class="cls">
-    <img class="icon" :src="'/naviIcon/'+icon+'.svg'" alt />
+  <button class="basic" :class="cls">
+    <div v-if="icon">
+      <img class="icon" :src="'/naviIcon/'+icon+'.svg'" alt />
+    </div>
     <p class="text">{{ text }}</p>
-  </div>
+  </button>
 </template>
 
 <script>
@@ -18,7 +20,8 @@ export default {
       type: String
     },
     icon: {
-      type: String
+      type: String,
+      default: ""
     }
   }
 };
@@ -110,17 +113,18 @@ export default {
   height: 36px;
   margin: 0;
 }
+
 .product_page_checkout_btn > p {
   font-size: 12px;
 }
 
-.about_gift_btn {
+.about_gift {
   padding: 3px 16px;
   border: 2px solid #f4b3ca;
   cursor: pointer;
-  margin-bottom: 100px;
 }
-.about_gift_btn > p {
+
+.about_gift > p {
   color: #f4b3ca;
 }
 @media screen and (max-width: 960px) {

@@ -18,7 +18,6 @@
         <p class="home_sub_title">豊さを味わう</p>
         <hr class="line" />
       </div>
-      <myFarm :products="products.pickupProducts" />
       <linkButton cls="top_products" linkTo="/products" text="もっと見る" />
     </div>
     <div class="timeline_area" v-if="isTimeline">
@@ -56,7 +55,6 @@
 //test
 // コンポーネント
 import mainImage from "~/components/MainImage";
-import myFarm from "~/components/MyFarm";
 import linkButton from "~/components/LinkButton";
 import timeline from "~/components/timeline/Timeline";
 import post from "~/components/timeline/Post";
@@ -68,7 +66,6 @@ import { mapState, mapGetters } from "vuex";
 export default {
   components: {
     mainImage,
-    myFarm,
     linkButton,
     timeline,
     post,

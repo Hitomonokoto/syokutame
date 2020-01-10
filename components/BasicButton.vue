@@ -1,5 +1,8 @@
 <template>
   <button class="basic" :class="cls" @click="onClick">
+    <div v-if="icon">
+      <img class="icon" :src="'/naviIcon/'+icon+'.svg'" alt />
+    </div>
     <slot />
   </button>
 </template>
@@ -9,6 +12,10 @@ export default {
   props: {
     cls: {
       type: String
+    },
+    icon: {
+      type: String,
+      default: ""
     }
   },
   methods: {
@@ -22,11 +29,24 @@ export default {
 <style scoped>
 .basic {
   color: white;
-  background-color: #b5c97c;
   border: none;
   border-radius: 5px;
   cursor: pointer;
 }
+.icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+/* アイコン入りボタン共通 */
+.about_gift {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+}
+
 .login_btn {
   margin: 10px 0;
   width: 300px;
@@ -177,6 +197,11 @@ export default {
   border: none;
   padding-right: 5px;
 }
+
+.about_gift {
+  background-color: #f4b3ca;
+}
+
 @media screen and (max-width: 960px) {
   .qAndAlink {
     width: 100%;

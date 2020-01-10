@@ -1,12 +1,10 @@
 <template>
   <main>
     <section class="page_info">
-      <p class="sub_title">カラダが喜び、心が笑う贈り物。</p>
+      <p class="sub_title">日々を楽しむ。</p>
       <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
     </section>
-    <section class="about_button">
-      <basicButton cls="about_gift" icon="giftWhite">ギフトとは</basicButton>
-    </section>
+    <section class="about_button"></section>
     <section class="gifts">
       <nuxt-link
         class="gift"
