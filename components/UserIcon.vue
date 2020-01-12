@@ -63,8 +63,8 @@ export default {
   }
 }
 .post_icon {
-  width: 50px;
-  border-radius: 10%;
+  width: 40px;
+  border-radius: 50%;
   margin-right: 10px;
 }
 

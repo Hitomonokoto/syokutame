@@ -90,13 +90,17 @@ export default {
   justify-content: center;
 }
 .post_area {
-  width: 500px;
-  box-shadow: 0px 0px 6px #d1d1d1;
-  margin-bottom: 30px;
+  width: 100%;
+  padding: 10px 0;
+  border-bottom: 1px solid lightgray;
 }
-@media screen and (max-width: 560px) {
+
+.post_area:last-child {
+  border-bottom: none;
+}
+@media screen and (min-width: 560px) {
   .post_area {
-    width: 100%;
+    width: 500px;
   }
 }
 </style>

@@ -4,52 +4,38 @@
       <p class="sub_title">日々を楽しむ。</p>
       <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
     </section>
-    <section class="about_button"></section>
     <section class="gifts">
-      <nuxt-link
-        class="gift"
-        v-for="(product, index) in this.products.products"
-        :to="'/gift/'+product.sys.id"
-        :key="index"
-      >
-        <div class="farmer">
-          <UserIcon
-            cls="gifts_page_farmer_icon"
-            :url="product.fields.farmerIcon.fields.file.url"
-          />
-          <UserName
-            cls="gifts_page_farmer_name"
-            :name="product.fields.farmName"
-          />
-        </div>
-        <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
-        <UserName
-          cls="gifts_page_gift_name"
-          :name="product.fields.productName"
-        />
-      </nuxt-link>
+      <timeline
+        :posts="timeline.posts"
+        timeline_type="all"
+        @post="post"
+        @post_edit="post_edit"
+      />
     </section>
   </main>
 </template>
 
 <script>
-import UserIcon from "~/components/UserIcon";
-import UserName from "~/components/userName";
+import timeline from "~/components/timeline/Timeline";
 // その他
 import { mapState } from "vuex";
 export default {
-  components: { UserIcon, UserName },
+  components: { timeline },
   async fetch({ store }) {
-    await store.dispatch("products/getProductsAction");
+    await store.dispatch("timeline/getPostsAction", { timeline_type: "all" });
   },
   methods: {},
   head: {
     title: "生産者紹介"
   },
-  computed: mapState({ products: "products" }),
+  computed: {
+    ...mapState({
+      timeline: state => state.timeline
+    })
+  },
   head() {
     return {
-      title: "ギフト一覧 | ショクタメ"
+      title: "ダイアリー | ショクタメ"
     };
   }
 };

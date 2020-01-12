@@ -1,28 +1,34 @@
 <template>
   <div class="posts">
-    <div class="user">
-      <nuxt-link :to="'/farmers/farmer/'+post_data.farmer_id" class="user_icon">
-        <userIcon cls="post_icon" :url="post_data.user_icon" />
-      </nuxt-link>
-      <div class="name_time_edit">
-        <div class="name_time">
-          <nuxt-link :to="'/farmers/farmer/'+post_data.farmer_id">
-            <p class="nickname">{{ post_data.name }}</p>
-          </nuxt-link>
-          <p class="time">{{ post_data.created.seconds | timestampToDate }}</p>
+    <div class="post_top">
+      <div class="user">
+        <nuxt-link
+          :to="'/farmers/farmer/'+post_data.farmer_id"
+          class="user_icon"
+        >
+          <userIcon cls="post_icon" :url="post_data.user_icon" />
+        </nuxt-link>
+        <div class="name_time_edit">
+          <div class="name_time">
+            <nuxt-link :to="'/farmers/farmer/'+post_data.farmer_id">
+              <p class="nickname">{{ post_data.name }}</p>
+            </nuxt-link>
+            <p class="time">{{ post_data.created.seconds | timestampToDate }}</p>
+          </div>
+          <basicButton
+            v-if="this.auth.user_id == user_id"
+            cls="post_edit_btn"
+            @emitClick="edit"
+          >編集</basicButton>
         </div>
-        <basicButton
-          v-if="this.auth.user_id == user_id"
-          cls="post_edit_btn"
-          @emitClick="edit"
-        >編集</basicButton>
       </div>
-    </div>
-    <div class="post_content">
       <p class="post_title">{{ post_data.title }}</p>
-      <div class="post_img">
-        <img :src="post_data.fileUrl" />
-      </div>
+    </div>
+
+    <div class="post_img">
+      <img :src="post_data.fileUrl" />
+    </div>
+    <div class="post_bottom">
       <div class="post_text" v-html="post_data.text"></div>
       <postActions
         @openComments="openComments"
@@ -127,11 +133,13 @@ export default {
 .posts {
   width: 100%;
 }
+.post_top {
+  padding: 10px;
+}
 .user {
   display: flex;
   align-items: center;
-  width: 100%;
-  padding: 10px;
+  margin-bottom: 10px;
 }
 .name_time_edit {
   width: 100%;
@@ -144,21 +152,21 @@ export default {
   font-size: 12px;
 }
 .post_title {
-  padding: 0 10px;
   font-weight: bold;
   font-size: 20px;
-  margin-bottom: 10px;
 }
 .post_text {
-  padding: 0 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .post_img {
   width: 100%;
 }
 .post_img > img {
   max-width: 100%;
-  height: auto;
   display: block;
+}
+
+.post_bottom {
+  padding: 10px;
 }
 </style>
