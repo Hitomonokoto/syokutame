@@ -3,23 +3,23 @@
     <div class="btn_area">
       <div
         class="btn"
-        v-if="Timeline.likes.indexOf(post_data.post_id) == -1 "
+        v-if="Timeline.likes.indexOf(post_id) == -1 "
         @click="getLike"
       >
         <fa class="like_icon" :icon="faHeart" />
-        <p class="like_text">いいね！({{ post_data.like_count }})</p>
+        <p class="like_text">いいね！({{ like_count }})</p>
       </div>
       <div
         class="btn"
-        v-if="Timeline.likes.indexOf(post_data.post_id) >= 0"
+        v-if="Timeline.likes.indexOf(post_id) >= 0"
         @click="loseLike"
       >
         <fa class="liked_icon" :icon="faHeart" />
-        <p class="liked_text">いいね！({{ post_data.like_count }})</p>
+        <p class="liked_text">いいね！({{ like_count }})</p>
       </div>
-      <div class="btn" @click="toggleComments">
+      <div class="btn" @click="toggleComments(post_id)">
         <fa class="comment_icon" :icon="faCommentAlt" />
-        <p class="comment_text">コメント({{ post_data.comment_count }})</p>
+        <p class="comment_text">コメント({{ comment_count }})</p>
       </div>
     </div>
     <p class="alert" v-if="isAlert">
@@ -39,8 +39,14 @@ import { faCommentAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default {
   props: {
-    post_data: {
-      type: Object
+    post_id: {
+      type: String
+    },
+    like_count: {
+      type: Number
+    },
+    comment_count: {
+      type: Number
     },
     timeline_type: {
       type: String
@@ -78,13 +84,13 @@ export default {
         timeline_type: this.timeline_type
       });
     },
-    toggleComments() {
+    toggleComments(post_id) {
       if (!this.Login.token) {
         this.isAlert = true;
       }
       if (this.isComment_btn == false) {
         this.isComment_btn = true;
-        this.$emit("openComments");
+        this.$emit("openComments", post_id);
       } else {
         this.isComment_btn = false;
         this.$emit("closeComments");

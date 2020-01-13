@@ -6,7 +6,9 @@ export const state = () => ({
     likes: []
 })
 
-
+export const getters = {
+    posts: state => state.posts
+}
 
 export const mutations = {
     getPosts(state, data) {
@@ -199,6 +201,7 @@ export const actions = {
     },
     // コメントを読み込む
     async getCommentsAction(context, payload) {
+        console.log(payload)
         const comments = [];
         const commentSnapShots = await firestore.collection('timeline').doc(payload).collection('comments').orderBy('created', 'asc').get();
         commentSnapShots.forEach(comment => {
@@ -206,6 +209,7 @@ export const actions = {
             comment_data.comment_id = comment.id;
             comments.push(comment_data);
         });
+
         context.commit('getComments', { comments: comments, post_id: payload });
     },
 

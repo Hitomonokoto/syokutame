@@ -8,7 +8,6 @@
       <timeline
         :posts="timeline.posts"
         timeline_type="all"
-        @post="post"
         @post_edit="post_edit"
       />
     </section>
@@ -24,7 +23,11 @@ export default {
   async fetch({ store }) {
     await store.dispatch("timeline/getPostsAction", { timeline_type: "all" });
   },
-  methods: {},
+  methods: {
+    post_edit(post_data) {
+      console.log(post_data);
+    }
+  },
   head: {
     title: "生産者紹介"
   },
