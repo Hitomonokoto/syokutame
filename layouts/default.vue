@@ -12,9 +12,7 @@ export default {
     GlobalNav
   },
   data() {
-    return {
-      isBtn: true
-    };
+    return {};
   },
   methods: {}
 };

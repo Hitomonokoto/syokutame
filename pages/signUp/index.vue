@@ -1,25 +1,8 @@
 <template>
   <main>
     <h1 class="page_title">ファミリー登録</h1>
-    <iconAndTextButton cls="about_gift_btn" text="ファミリーとは" icon="gift_pink" />
+    <basicButton cls="about_gift" icon="giftWhite">ファミリーとは</basicButton>
     <div class="regist_form">
-      <dl>
-        <dt>お名前</dt>
-        <dd class="name_area">
-          <basicInput
-            cls="regist_type1"
-            type="text"
-            v-model="lastName"
-            placeholder="姓"
-          />
-          <basicInput
-            cls="regist_type1"
-            type="text"
-            v-model="firstName"
-            placeholder="名"
-          />
-        </dd>
-      </dl>
       <dl>
         <dt>ニックネーム</dt>
         <dd>
@@ -46,11 +29,15 @@
             v-model="password"
             id="password"
           />
+        </dd>
+      </dl>
+      <dl>
+        <dt>パスワード（確認用）</dt>
+        <dd class="dd_password">
           <basicInput
             cls="regist_type2"
             type="password"
             v-model="passwordCheck"
-            placeholder="パスワード（確認用）"
             id="passwordCheck"
           />
         </dd>
@@ -73,8 +60,6 @@ export default {
 
   data() {
     return {
-      lastName: "",
-      firstName: "",
       nickname: "",
       email: "",
       password: "",
@@ -88,8 +73,6 @@ export default {
       // 未入力チェック
       if (
         !this.nickname ||
-        !this.lastName ||
-        !this.firstName ||
         !this.email ||
         !this.password ||
         !this.passwordCheck

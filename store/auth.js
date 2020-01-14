@@ -19,6 +19,10 @@ export const mutations = {
   },
   getUser(state, data) {
     state.user = data;
+  },
+  signOut(state) {
+    state.uid = "";
+    state.user = {};
   }
 };
 
@@ -37,7 +41,6 @@ export const actions = {
         })
         .catch(error => {
           console.log("サインインに失敗しました！");
-          console.log(error.message);
           resolve(false);
         })
     });
@@ -45,6 +48,7 @@ export const actions = {
 
   // サインアップ
   signUpAction(context, signUpData) {
+    console.log(signUpData)
     return new Promise(resolve => {
       fireauth
         .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
@@ -55,20 +59,22 @@ export const actions = {
           })
             .then(() => {
               console.log("サインアップに成功しました！");
-              cookies.set("token", user.user.uid, { expires: 7 });
+              cookies.set("token", user.user.uid);
               this.$router.push("/");
             })
+            .catch(error => {
+              console.log("クッキーの登録に失敗しました！");
+            });
         })
         .catch(error => {
           console.log("サインアップに失敗しました！");
-          console.log(error.message);
-          resolve(false);
+          resolve(error);
         });
     });
   },
 
   // ユーザーデータをデータベースに登録
-  createUserDataAction(context, userData) {
+  async createUserDataAction(context, userData) {
     const docRef = firestore.collection("users").doc(userData.uid);
     docRef.set({
       nickname: userData.nickname,

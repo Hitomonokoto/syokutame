@@ -1,10 +1,19 @@
 <template>
   <div>
     <div class="top_nav">
-      <nuxt-link class="top_nav_left" to="/">
-        <UserIcon cls="global_nav_icon" url="samplein.jpg" />
-        <baseText cls="global_nav_user_name">永田悠飛</baseText>
-      </nuxt-link>
+      <div v-if="Uid">
+        <nuxt-link class="top_nav_left" to="/user">
+          <UserIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseText cls="global_nav_user_name">{{ User.nickname }}</baseText>
+        </nuxt-link>
+      </div>
+      <div v-if="!Uid">
+        <nuxt-link class="top_nav_left" to="/signIn">
+          <UserIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseText cls="global_nav_user_name">ログイン</baseText>
+        </nuxt-link>
+      </div>
+
       <p class="title">{{ getTitle }}</p>
       <div class="top_nav_right">
         <img class="hamburger" src="naviIcon/menu_gry.svg" alt />
@@ -52,13 +61,10 @@
 </template>
 
 <script>
-// コンポーネント
 import NavItem from "~/components/navigation/navItem";
 import UserIcon from "~/components/UserIcon";
-
-// その他
-import { mapState } from "vuex";
 import { getTitle } from "~/titles";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -82,7 +88,8 @@ export default {
   computed: {
     getTitle() {
       return getTitle(this.path, { spaceName: this.name });
-    }
+    },
+    ...mapGetters("auth", ["Uid", "User"])
   },
   watch: {
     $route() {

@@ -43,8 +43,12 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
-    'nuxt-fontawesome'
+    'nuxt-fontawesome',
+    '@nuxtjs/style-resources',
   ],
+  styleResources: {
+    scss: ['~/assets/sass/_color.scss']
+  },
   markdownit: {
     injected: true,
     html: true,

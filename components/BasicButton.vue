@@ -26,7 +26,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .basic {
   color: white;
   border: none;
@@ -50,18 +50,19 @@ export default {
 /* ーーーーーーーーーーーーーーーー */
 
 .about_shokutame_btn {
-  background-color: #f4b3ca;
+  background-color: $pink;
 }
 
 .login_btn {
   margin: 10px 0;
   width: 300px;
   padding: 10px 0px;
+  background-color: $green;
 }
 .checkout_btn {
   padding: 5px 20px;
   margin-bottom: 20px;
-  background-color: #f4b3ca;
+  background-color: $pink;
 }
 .post_btn {
   padding: 5px 20px;
@@ -127,7 +128,7 @@ export default {
 .regist_btn {
   padding: 10px 30px;
   margin-bottom: 50px;
-  background-color: #f4b3ca;
+  background-color: $pink;
 }
 .logout_btn {
   padding: 5px 10px;
@@ -187,7 +188,7 @@ export default {
   position: absolute;
   top: -80px;
   right: 20px;
-  background-color: #f4b3ca;
+  background-color: $pink;
   padding: 10px 30px;
 }
 .followed_btn {
@@ -205,7 +206,7 @@ export default {
 }
 
 .about_gift {
-  background-color: #f4b3ca;
+  background-color: $pink;
 }
 
 @media screen and (max-width: 960px) {

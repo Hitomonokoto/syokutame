@@ -11,14 +11,6 @@
       </div>
       <div class="mypage_header">
         <p class="nickname">{{ User.nickname }} さん</p>
-        <div class="mail_and_menu">
-          <span class="mail_area">
-            <iconAndTextButton cls="mail" :text="null" icon="mail_gry" />
-          </span>
-          <span class="menu_area" @click="menu">
-            <iconAndTextButton cls="menu" :text="null" icon="menu_gry" />
-          </span>
-        </div>
       </div>
     </div>
 
@@ -27,7 +19,7 @@
     </div>
     <profileData v-if="isProfileData" :user_data="User" />
     <follower v-if="isFollower" />
-    <basicButton cls="logout_btn" @emitClick="logout">ログアウト</basicButton>
+    <basicButton cls="logout_btn" @emitClick="signOut">ログアウト</basicButton>
   </main>
 </template>
 
@@ -59,7 +51,6 @@ export default {
       image_path: null,
       isProfileData: false,
       isFollower: true,
-      isData: false,
       isMenu: false
     };
   },
@@ -74,12 +65,10 @@ export default {
       this.isFollower = false;
       this.isMenu = false;
     },
-    logout() {
-      this.isData = false;
-
+    signOut() {
       const cookies = new Cookies();
       cookies.remove("token");
-      this.$store.commit("auth/logout");
+      this.$store.commit("auth/signOut");
       this.$router.push("/");
     },
     menu() {
