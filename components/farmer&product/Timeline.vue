@@ -16,15 +16,15 @@
       </div>
     </div>
 
-    <timeline
+    <postList
       v-if="isTimeline"
       @post="post"
       @post_edit="post_edit"
       :posts="timeline.PostsSingle"
       timeline_type="single"
     />
-    <post v-if="isPost" @emitBack="postBack" timeline_type="single" />
-    <postEdit
+    <postForm v-if="isPost" @emitBack="postBack" timeline_type="single" />
+    <postEditForm
       v-if="isPostEdit"
       @editBack="editBack"
       :post_data="this.post_data"
@@ -37,15 +37,15 @@
 
 <script>
 // コンポーネント
-import timeline from "~/components/timeline/Timeline";
-import post from "~/components/timeline/Post";
-import postEdit from "~/components/timeline/PostEdit";
+import postList from "~/components/timeline/PostList";
+import postForm from "~/components/timeline/PostForm";
+import postEditForm from "~/components/timeline/PostEditForm";
 
 // その他
 import { mapState } from "vuex";
 
 export default {
-  components: { timeline, post, postEdit },
+  components: { postList, postForm, postEditForm },
   data() {
     return {
       isPost_btn: true,

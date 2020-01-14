@@ -19,16 +19,10 @@
             cls="gifts_page_farmer_icon"
             :url="product.fields.farmerIcon.fields.file.url"
           />
-          <UserName
-            cls="gifts_page_farmer_name"
-            :name="product.fields.farmName"
-          />
+          <baseText cls="gifts_page_farmer_name">{{ product.fields.farmName }}</baseText>
         </div>
         <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
-        <UserName
-          cls="gifts_page_gift_name"
-          :name="product.fields.productName"
-        />
+        <baseText cls="gifts_page_gift_name">{{ product.fields.productName }}</baseText>
       </nuxt-link>
     </section>
   </main>
@@ -36,11 +30,10 @@
 
 <script>
 import UserIcon from "~/components/UserIcon";
-import UserName from "~/components/userName";
 // その他
 import { mapState } from "vuex";
 export default {
-  components: { UserIcon, UserName },
+  components: { UserIcon },
   async fetch({ store }) {
     await store.dispatch("products/getProductsAction");
   },

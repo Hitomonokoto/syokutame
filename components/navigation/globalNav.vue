@@ -3,7 +3,7 @@
     <div class="top_nav">
       <nuxt-link class="top_nav_left" to="/">
         <UserIcon cls="global_nav_icon" url="samplein.jpg" />
-        <UserName cls="global_nav_user_name" name="永田悠飛" />
+        <baseText cls="global_nav_user_name">永田悠飛</baseText>
       </nuxt-link>
       <p class="title">{{ getTitle }}</p>
       <div class="top_nav_right">
@@ -54,9 +54,7 @@
 <script>
 // コンポーネント
 import NavItem from "~/components/navigation/navItem";
-import linkButton from "~/components/LinkButton";
 import UserIcon from "~/components/UserIcon";
-import UserName from "~/components/userName";
 
 // その他
 import { mapState } from "vuex";
@@ -65,9 +63,7 @@ import { getTitle } from "~/titles";
 export default {
   components: {
     NavItem,
-    linkButton,
-    UserIcon,
-    UserName
+    UserIcon
   },
   data() {
     return {

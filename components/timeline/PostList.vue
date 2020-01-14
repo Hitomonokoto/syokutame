@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     edit(post_data) {
-      this.$emit("post_edit", post_data);
+      this.$emit("editPost", post_data);
     },
     sendComment(payload) {
       this.$emit("sendComment", payload);

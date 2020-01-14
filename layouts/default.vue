@@ -45,6 +45,7 @@ img {
 /* これより下は全ページ共通のCSS */
 
 main {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;

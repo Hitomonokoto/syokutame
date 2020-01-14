@@ -39,12 +39,18 @@ export default {
   margin-right: 5px;
 }
 
-/* アイコン入りボタン共通 */
-.about_gift {
+/* アイコン入りボタン共通ーーーー */
+.about_gift,
+.about_shokutame_btn {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 5px 10px;
+}
+/* ーーーーーーーーーーーーーーーー */
+
+.about_shokutame_btn {
+  background-color: #f4b3ca;
 }
 
 .login_btn {

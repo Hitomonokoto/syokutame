@@ -15,7 +15,7 @@
           cls="farmers_page_farmer_icon"
           :url="farmer.fields.farmerIcon.fields.file.url"
         />
-        <UserName cls="farmers_page_farm_name" :name="farmer.fields.farmName" />
+        <baseText cls="farmers_page_farm_name">{{ farmer.fields.farmName }}</baseText>
       </nuxt-link>
     </div>
   </main>
@@ -24,17 +24,12 @@
 
 
 <script>
-//コンポーネント
 import UserIcon from "~/components/UserIcon";
-import UserName from "~/components/userName";
-
-//その他
 import { mapState } from "vuex";
 
 export default {
   components: {
-    UserIcon,
-    UserName
+    UserIcon
   },
   async fetch({ store }) {
     await store.dispatch("farmers/getFarmersAction");

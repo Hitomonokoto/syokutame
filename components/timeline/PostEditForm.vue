@@ -1,11 +1,11 @@
 <template>
-  <div class="post">
+  <div class="postEditForm">
     <div class="user">
       <userIcon cls="post_edit_icon" :url="auth.user.user_icon" />
       <div class="name_and_back">
-        <p class="nickname">{{post_data.name}}</p>
+        <p class="nickname">{{name}}</p>
         <div class="actions">
-          <basicButton cls="back_btn" @emitClick="emitBack">戻る</basicButton>
+          <basicButton cls="back_btn" @emitClick="back">戻る</basicButton>
           <basicButton cls="update_btn" @emitClick="updatePost">更新する</basicButton>
         </div>
       </div>
@@ -75,14 +75,15 @@ export default {
   },
   data() {
     return {
-      title: this.post_data.title,
-      text: this.post_data.text.split("<br>").join("\n"),
-      fileName: this.post_data.fileName,
-      fileUrl: this.post_data.fileUrl
+      name: this.edit_data.name,
+      title: this.edit_data.title,
+      text: this.edit_data.text.split("<br>").join("\n"),
+      fileName: this.edit_data.fileName,
+      fileUrl: this.edit_data.fileUrl
     };
   },
   props: {
-    post_data: {
+    edit_data: {
       type: Object
     },
     timeline_type: {
@@ -90,8 +91,8 @@ export default {
     }
   },
   methods: {
-    emitBack() {
-      this.$emit("editBack");
+    back() {
+      this.$emit("back");
     },
     fileDalete() {
       this.fileUrl = null;
@@ -174,10 +175,8 @@ export default {
 </script>
 
 <style scoped>
-.post {
-  width: 500px;
-  box-shadow: 0px 0px 6px #d1d1d1;
-  margin-bottom: 20px;
+.postEditForm {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -220,9 +219,6 @@ export default {
   display: flex;
   justify-content: flex-end;
 }
-@media screen and (max-width: 560px) {
-  .post {
-    width: 100%;
-  }
+@media screen and (min-width: 560px) {
 }
 </style>

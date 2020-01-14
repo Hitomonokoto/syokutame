@@ -1,6 +1,6 @@
 <template>
-  <div class="post">
-    <div class="post_header">
+  <div class="postForm">
+    <div class="head">
       <div class="user">
         <userIcon cls="post_form_icon" :url="auth.user.user_icon" />
       </div>
@@ -69,7 +69,7 @@ export default {
   },
   methods: {
     back() {
-      this.$emit("emitBack");
+      this.$emit("back");
     },
     async setFiles(e) {
       const file = (e.target.files || e.dataTransfer.files)[0];
@@ -140,17 +140,15 @@ export default {
 </script>
 
 <style scoped>
-.post {
-  width: 500px;
-  box-shadow: 0px 0px 6px #d1d1d1;
-  margin-bottom: 20px;
+.postForm {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: 10px 0;
 }
 
-.post_header {
+.head {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -177,9 +175,6 @@ export default {
 .picture {
   display: none;
 }
-@media screen and (max-width: 560px) {
-  .post {
-    width: 100%;
-  }
+@media screen and (min-width: 560px) {
 }
 </style>

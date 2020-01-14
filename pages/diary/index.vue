@@ -1,31 +1,63 @@
 <template>
   <main>
-    <section class="page_info">
+    <section v-if="!isPostForm && !isPostEditForm" class="page_info">
       <p class="sub_title">日々を楽しむ。</p>
       <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
     </section>
-    <section class="gifts">
-      <timeline
-        :posts="timeline.posts"
-        timeline_type="all"
-        @post_edit="post_edit"
-      />
-    </section>
+    <basicButton
+      v-if="!isPostForm && !isPostEditForm"
+      cls="post_btn"
+      @emitClick="post"
+    >Diaryを書く</basicButton>
+    <postList
+      v-if="!isPostForm && !isPostEditForm"
+      :posts="timeline.posts"
+      timeline_type="all"
+      @editPost="editPost"
+    />
+    <postForm v-if="isPostForm" @back="back" timeline_type="all" />
+    <postEditForm
+      v-if="isPostEditForm"
+      @back="back"
+      :edit_data="this.edit_data"
+      timeline_type="all"
+    />
   </main>
 </template>
 
 <script>
-import timeline from "~/components/timeline/Timeline";
+import postList from "~/components/timeline/PostList";
+import postForm from "~/components/timeline/PostForm";
+import postEditForm from "~/components/timeline/PostEditForm";
 // その他
 import { mapState } from "vuex";
 export default {
-  components: { timeline },
+  components: {
+    postList,
+    postForm,
+    postEditForm
+  },
   async fetch({ store }) {
     await store.dispatch("timeline/getPostsAction", { timeline_type: "all" });
   },
+  data() {
+    return {
+      isPostForm: false,
+      isPostEditForm: false,
+      edit_data: {}
+    };
+  },
   methods: {
-    post_edit(post_data) {
-      console.log(post_data);
+    post() {
+      this.isPostForm = true;
+    },
+    editPost(post_data) {
+      this.edit_data = post_data;
+      this.isPostEditForm = true;
+    },
+    back() {
+      this.isPostForm = false;
+      this.isPostEditForm = false;
     }
   },
   head: {
@@ -45,44 +77,9 @@ export default {
 </script>
 
 <style scoped>
-.gift {
-  display: block;
-  border-bottom: 1px solid lightgray;
-  padding: 20px;
-}
-
-.gift:last-child {
-  border-bottom: none;
-}
-
-.farmer {
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-}
-
-.gift_img {
-  width: 100%;
-  border-radius: 5px;
-}
-
 @media screen and (min-width: 560px) {
-  .gifts {
-    display: flex;
-    flex-flow: row wrap;
-    padding: 10px;
-  }
-
-  .gift {
-    width: 50%;
-    border: none;
-    padding: 10px;
-  }
 }
 
 @media screen and (min-width: 960px) {
-  .gift {
-    width: 33.33%;
-  }
 }
 </style>
