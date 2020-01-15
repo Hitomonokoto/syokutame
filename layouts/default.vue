@@ -56,16 +56,8 @@ main {
   padding: 20px;
 }
 
-.sub_title {
-  width: 100%;
-  font-size: 16px;
-  font-weight: bold;
+.page_title {
   margin-bottom: 20px;
-}
-
-.description {
-  width: 100%;
-  font-size: 14px;
 }
 
 .about_button {

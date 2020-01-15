@@ -1,8 +1,11 @@
 <template>
   <main>
     <section v-if="!isPostForm && !isPostEditForm" class="page_info">
-      <p class="sub_title">日々を楽しむ。</p>
-      <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
+      <baseText class="page_title" :isWeight="true">日々を楽しむ。</baseText>
+      <baseText
+        class="description"
+        size="14px"
+      >価値観を共有する詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</baseText>
     </section>
     <basicButton
       v-if="!isPostForm && !isPostEditForm"

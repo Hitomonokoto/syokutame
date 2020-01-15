@@ -1,8 +1,11 @@
 <template>
   <main>
     <section class="page_info">
-      <p class="sub_title">豊さを繋ぐひと</p>
-      <p class="description">価値だけでは表現することの出来ない"モノの価値"。夢を描く素敵な方々を紹介致します。</p>
+      <baseText class="page_title" :isWeight="true">豊さを繋ぐひと</baseText>
+      <baseText
+        class="description"
+        size="14px"
+      >価値だけでは表現することの出来ない"モノの価値"。夢を描く素敵な方々を紹介致します。</baseText>
     </section>
     <div class="farmers">
       <nuxt-link
@@ -15,7 +18,7 @@
           cls="farmers_page_farmer_icon"
           :url="farmer.fields.farmerIcon.fields.file.url"
         />
-        <baseText cls="farmers_page_farm_name">{{ farmer.fields.farmName }}</baseText>
+        <baseText class="farm_name">{{ farmer.fields.farmName }}</baseText>
       </nuxt-link>
     </div>
   </main>
@@ -54,10 +57,16 @@ export default {
   flex-wrap: wrap;
   padding: 10px;
 }
+
 .farmer {
   display: block;
   width: 50%;
   padding: 10px;
+}
+
+.farm_name {
+  text-align: center;
+  padding: 5px 0px;
 }
 
 @media screen and (min-width: 560px) {

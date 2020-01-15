@@ -5,7 +5,7 @@
     <div class="regist_form">
       <dl>
         <dt>
-          <baseText cls="input_item">ニックネーム</baseText>
+          <baseText class="input_item" size="12px" isWeight="true">ニックネーム</baseText>
         </dt>
         <dd>
           <basicInput cls="regist_type2" type="text" v-model="nickname" />
@@ -13,7 +13,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText cls="input_item">メールアドレス</baseText>
+          <baseText class="input_item" size="12px" isWeight="true">メールアドレス</baseText>
         </dt>
         <dd>
           <basicInput
@@ -26,7 +26,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText cls="input_item">パスワード</baseText>
+          <baseText class="input_item" size="12px" isWeight="true">パスワード</baseText>
         </dt>
         <dd>
           <basicInput
@@ -39,7 +39,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText cls="input_item">パスワード（確認用）</baseText>
+          <baseText class="input_item" size="12px" isWeight="true">パスワード（確認用）</baseText>
         </dt>
         <dd>
           <basicInput
@@ -161,6 +161,10 @@ export default {
 .name_area {
   display: flex;
   justify-content: space-between;
+}
+
+.input_item {
+  margin-bottom: 5px;
 }
 
 .error_text {

@@ -4,13 +4,13 @@
       <div v-if="Uid">
         <nuxt-link class="top_nav_left" to="/user">
           <UserIcon cls="global_nav_icon" url="samplein.jpg" />
-          <baseText cls="global_nav_user_name">{{ User.nickname }}</baseText>
+          <baseText class="user_name">{{ User.nickname }}</baseText>
         </nuxt-link>
       </div>
       <div v-if="!Uid">
         <nuxt-link class="top_nav_left" to="/signIn">
           <UserIcon cls="global_nav_icon" url="samplein.jpg" />
-          <baseText cls="global_nav_user_name">ログイン</baseText>
+          <baseText class="user_name">ログイン</baseText>
         </nuxt-link>
       </div>
 
@@ -128,6 +128,11 @@ export default {
   margin: 15px;
 }
 
+.user_name {
+  display: none;
+  margin: auto 0px;
+}
+
 .bottom_nav {
   position: fixed;
   bottom: 0;
@@ -153,6 +158,10 @@ export default {
 
   .top_nav_right {
     border-left: 1px solid lightgray;
+  }
+
+  .user_name {
+    display: inline;
   }
 
   .bottom_nav {

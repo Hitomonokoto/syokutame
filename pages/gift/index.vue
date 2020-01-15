@@ -1,8 +1,11 @@
 <template>
   <main>
     <section class="page_info">
-      <p class="sub_title">カラダが喜び、心が笑う贈り物。</p>
-      <p class="description">“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</p>
+      <baseText class="page_title" :isWeight="true">カラダが喜び、心が笑う贈り物。</baseText>
+      <baseText
+        class="description"
+        size="14px"
+      >“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</baseText>
     </section>
     <section class="about_button">
       <basicButton cls="about_gift" icon="giftWhite">ギフトとは</basicButton>
@@ -19,10 +22,13 @@
             cls="gifts_page_farmer_icon"
             :url="product.fields.farmerIcon.fields.file.url"
           />
-          <baseText cls="gifts_page_farmer_name">{{ product.fields.farmName }}</baseText>
+          <baseText
+            class="farmer_name"
+            size="14px"
+          >{{ product.fields.farmName }}</baseText>
         </div>
         <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
-        <baseText cls="gifts_page_gift_name">{{ product.fields.productName }}</baseText>
+        <baseText class="gift_name">{{ product.fields.productName }}</baseText>
       </nuxt-link>
     </section>
   </main>
@@ -70,6 +76,16 @@ export default {
 .gift_img {
   width: 100%;
   border-radius: 5px;
+}
+
+.gift_name {
+  text-align: center;
+  padding: 5px 0px;
+}
+
+.farmer_name {
+  margin-left: 50px;
+  padding: 5px 0px;
 }
 
 @media screen and (min-width: 560px) {

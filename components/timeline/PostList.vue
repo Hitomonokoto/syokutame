@@ -8,7 +8,7 @@
 
         <div class="user_name_and_posted_time">
           <nuxt-link :to="'/farmers/farmer/'+post.farmer_id">
-            <baseText cls="user_name">{{ post.name }}</baseText>
+            <baseText class="user_name" size="14px">{{ post.name }}</baseText>
           </nuxt-link>
 
           <p class="posted_time">{{ post.created.seconds | timestampToDate }}</p>
@@ -24,7 +24,7 @@
       </div>
 
       <div class="title">
-        <baseText cls="post_title">{{ post.title }}</baseText>
+        <baseText class="post_title" :isWeight="true">{{ post.title }}</baseText>
       </div>
 
       <div class="image">
