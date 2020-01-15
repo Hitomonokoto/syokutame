@@ -59,6 +59,13 @@ export default {
   padding: 10px 0px;
   background-color: $green;
 }
+
+.foget_pass_btn {
+  color: #707070;
+  background-color: transparent;
+  margin-bottom: 50px;
+}
+
 .checkout_btn {
   padding: 5px 20px;
   margin-bottom: 20px;

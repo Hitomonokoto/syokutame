@@ -1,16 +1,20 @@
 <template>
   <main>
-    <h1 class="page_title">ファミリー登録</h1>
+    <h1 class="page_title">新規登録</h1>
     <basicButton cls="about_gift" icon="giftWhite">ファミリーとは</basicButton>
     <div class="regist_form">
       <dl>
-        <dt>ニックネーム</dt>
+        <dt>
+          <baseText cls="input_item">ニックネーム</baseText>
+        </dt>
         <dd>
           <basicInput cls="regist_type2" type="text" v-model="nickname" />
         </dd>
       </dl>
       <dl>
-        <dt>メールアドレス</dt>
+        <dt>
+          <baseText cls="input_item">メールアドレス</baseText>
+        </dt>
         <dd>
           <basicInput
             cls="regist_type2"
@@ -21,8 +25,10 @@
         </dd>
       </dl>
       <dl>
-        <dt>パスワード</dt>
-        <dd class="dd_password">
+        <dt>
+          <baseText cls="input_item">パスワード</baseText>
+        </dt>
+        <dd>
           <basicInput
             cls="regist_type2"
             type="password"
@@ -32,8 +38,10 @@
         </dd>
       </dl>
       <dl>
-        <dt>パスワード（確認用）</dt>
-        <dd class="dd_password">
+        <dt>
+          <baseText cls="input_item">パスワード（確認用）</baseText>
+        </dt>
+        <dd>
           <basicInput
             cls="regist_type2"
             type="password"
@@ -43,7 +51,11 @@
         </dd>
       </dl>
     </div>
-    <ErrorMessage :errorType="errorType" />
+    <ErrorMessage
+      v-if="errorType!==0"
+      class="error_text"
+      :errorType="errorType"
+    />
     <basicButton cls="regist_btn" @emitClick="signUp">登録</basicButton>
   </main>
 </template>
@@ -145,13 +157,15 @@ export default {
 .page_title {
   margin-bottom: 60px;
 }
+
 .name_area {
   display: flex;
   justify-content: space-between;
 }
-.dd_password {
-  display: flex;
-  flex-direction: column;
+
+.error_text {
+  padding: 10px 20px;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 560px) {

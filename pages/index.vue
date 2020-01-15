@@ -2,13 +2,12 @@
   <main>
     <mainImage cls="top_img" url="/mainImage/top-img.jpg" />
     <div class="beginner_area">
-      <nuxt-link to="/aboutMyFarm">
-        <basicButton
-          v-if="!Uid"
-          cls="about_shokutame_btn"
-          icon="beginner_w"
-        >初めての方はこちら</basicButton>
-      </nuxt-link>
+      <basicButton
+        v-if="!Uid"
+        cls="about_shokutame_btn"
+        icon="beginner_w"
+        @emitClick="goToAboutSyokutame"
+      >初めての方はこちら</basicButton>
     </div>
   </main>
 </template>
@@ -33,6 +32,11 @@ export default {
     return {
       title: "ショクタメ"
     };
+  },
+  methods: {
+    goToAboutSyokutame() {
+      this.$router.push("/aboutMyFarm");
+    }
   }
 };
 </script>

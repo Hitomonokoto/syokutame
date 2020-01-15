@@ -45,6 +45,12 @@ export default {
   margin: auto 0px;
 }
 
+.input_item {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
 @media screen and (min-width: 960px) {
   .global_nav_user_name {
     display: inline;

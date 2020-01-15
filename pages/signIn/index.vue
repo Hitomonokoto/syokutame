@@ -18,11 +18,16 @@
       placeholder="パスワード"
       id="password"
     />
-    <ErrorMessage :errorType="errorType" />
+    <ErrorMessage
+      v-if="errorType!==0"
+      class="error_text"
+      :errorType="errorType"
+    />
     <basicButton class="login_btn" @emitClick="signIn">ログイン</basicButton>
-
-    <span class="foget_pass_btn" @click="passWordReset">パスワードをお忘れの方はこちら</span>
-
+    <basicButton
+      class="foget_pass_btn"
+      @emitClick="passWordReset"
+    >パスワードをお忘れの方はこちら</basicButton>
     <linkButton cls="regist_btn" linkTo="/signUp" text="新規登録" />
   </main>
 </template>
@@ -85,9 +90,6 @@ export default {
 </script>
 
 <style scoped>
-main {
-  height: 100vh;
-}
 .logo {
   margin-top: 50px;
   margin-bottom: 100px;
@@ -96,18 +98,9 @@ main {
   width: 150px;
 }
 
-.foget_pass {
-  width: 90%;
-}
-.foget_pass_p {
-  color: #707070;
-  padding: 20px 0;
-  text-align: center;
-}
-.foget_pass_btn {
-  color: #707070;
-  margin-bottom: 50px;
-  cursor: pointer;
+.error_text {
+  padding: 10px 20px;
+  margin-bottom: 30px;
 }
 
 @media screen and (max-width: 960px) {
