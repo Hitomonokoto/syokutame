@@ -8,11 +8,11 @@
     </div>
     <div class="post_btn" v-if="isPost_btn && auth.user">
       <div v-if="farmers.farmer">
-        <basicButton
+        <baseButton
           cls="post_btn"
           v-if="auth.user.farmer_id == farmers.farmer.sys.id"
           @emitClick="post"
-        >Diaryを書く</basicButton>
+        >Diaryを書く</baseButton>
       </div>
     </div>
 

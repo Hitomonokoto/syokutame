@@ -1,13 +1,13 @@
 <template>
   <main>
-    <mainImage
-      cls="basic"
+    <baseImage
+      class="main_img"
       :src="Farmers.farmer.fields.mainImage.fields.file.url"
       alt
     />
     <div class="top_area">
-      <basicButton v-if="!isFollow" cls="follow_btn" @emitClick="follow">フォローする</basicButton>
-      <basicButton v-if="isFollow" cls="followed_btn" @emitClick="follow">フォロー中</basicButton>
+      <baseButton v-if="!isFollow" cls="follow_btn" @emitClick="follow">フォローする</baseButton>
+      <baseButton v-if="isFollow" cls="followed_btn" @emitClick="follow">フォロー中</baseButton>
     </div>
     <div class="index">
       <div
@@ -39,18 +39,13 @@
 </template>
 
 <script>
-// コンポーネント
-import mainImage from "~/components/MainImage";
 import story from "~/components/farmer&product/Story";
 import products from "~/components/farmer&product/Products";
 import timeline from "~/components/farmer&product/Timeline";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
   components: {
-    mainImage,
     story,
     products,
     timeline

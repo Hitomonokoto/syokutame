@@ -1,5 +1,10 @@
 <template>
-  <img class="basic" :class="cls" :src="url" />
+  <div>
+    <img v-if="!link" class="basic" :class="cls" :src="url" />
+    <nuxt-link v-if="link" :to="link">
+      <img class="basic" :class="cls" :src="url" />
+    </nuxt-link>
+  </div>
 </template>
 
 
@@ -8,10 +13,16 @@
 export default {
   props: {
     cls: {
-      type: String
+      type: String,
+      default: ""
     },
     url: {
-      type: String
+      type: String,
+      required: true
+    },
+    link: {
+      type: String,
+      default: ""
     }
   }
 };

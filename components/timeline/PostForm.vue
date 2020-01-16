@@ -2,14 +2,14 @@
   <div class="postForm">
     <div class="head">
       <div class="user">
-        <userIcon cls="post_form_icon" :url="auth.user.user_icon" />
+        <baseIcon cls="post_form_icon" :url="auth.user.user_icon" />
       </div>
       <div class="actions">
-        <basicButton cls="back_btn" @emitClick="back">戻る</basicButton>
-        <basicButton cls="send_btn" @emitClick="sendPost">投稿する</basicButton>
+        <baseButton cls="back_btn" @emitClick="back">戻る</baseButton>
+        <baseButton cls="send_btn" @emitClick="sendPost">投稿する</baseButton>
       </div>
     </div>
-    <basicInput
+    <baseInput
       cls="post_title"
       v-model="title"
       type="text"
@@ -39,21 +39,11 @@
 </template>
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-import basicInput from "~/components/BasicInput";
-import userIcon from "~/components/UserIcon";
-
-// その他
 import { mapState } from "vuex";
 import uuid from "uuid";
 
 export default {
-  components: {
-    linkButton,
-    basicInput,
-    userIcon
-  },
+  components: {},
   props: {
     timeline_type: {
       type: String

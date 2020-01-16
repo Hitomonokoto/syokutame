@@ -8,7 +8,7 @@
       >“価値観を共有する”詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</baseText>
     </section>
     <section class="about_button">
-      <basicButton cls="about_gift" icon="giftWhite">ギフトとは</basicButton>
+      <baseButton cls="about_gift" icon="giftWhite">ギフトとは</baseButton>
     </section>
     <section class="gifts">
       <nuxt-link
@@ -18,7 +18,7 @@
         :key="index"
       >
         <div class="farmer">
-          <UserIcon
+          <baseIcon
             cls="gifts_page_farmer_icon"
             :url="product.fields.farmerIcon.fields.file.url"
           />
@@ -35,11 +35,9 @@
 </template>
 
 <script>
-import UserIcon from "~/components/UserIcon";
-// その他
 import { mapState } from "vuex";
 export default {
-  components: { UserIcon },
+  components: {},
   async fetch({ store }) {
     await store.dispatch("products/getProductsAction");
   },

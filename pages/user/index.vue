@@ -1,16 +1,16 @@
 <template>
   <main>
-    <mainImage cls="basic" :url="image_path" />
+    <baseImage class="main_img" :url="image_path" />
     <div class="profile_area">
       <div class="xxx">
         <div class="user_icon">
           <div class="icon_edge">
-            <userIcon cls="user_page_icon" :url="User.user_icon" />
+            <baseIcon cls="user_page_icon" :url="User.user_icon" />
           </div>
         </div>
       </div>
       <div class="mypage_header">
-        <p class="nickname">{{ User.nickname }} さん</p>
+        <baseText class="nickname" :isWeight="true">{{ User.nickname }}</baseText>
       </div>
     </div>
 
@@ -19,32 +19,23 @@
     </div>
     <profileData v-if="isProfileData" :user_data="User" />
     <follower v-if="isFollower" />
-    <basicButton cls="logout_btn" @emitClick="signOut">ログアウト</basicButton>
+    <baseButton cls="logout_btn" @emitClick="signOut">ログアウト</baseButton>
   </main>
 </template>
 
 
 <script>
-// コンポーネント
-import mainImage from "~/components/MainImage";
-import linkButton from "~/components/LinkButton";
 import mypageMenu from "~/components/user/MypageMenu";
 import follower from "~/components/user/Follower";
 import profileData from "~/components/user/ProfileData";
-import userIcon from "~/components/UserIcon";
-
-// その他
 import { mapGetters } from "vuex";
 import Cookies from "universal-cookie";
 
 export default {
   components: {
-    mainImage,
-    linkButton,
     mypageMenu,
     follower,
-    profileData,
-    userIcon
+    profileData
   },
   data() {
     return {
@@ -131,7 +122,6 @@ export default {
   margin-right: 10px;
 }
 .nickname {
-  font-weight: bold;
   margin-bottom: 20px;
 }
 

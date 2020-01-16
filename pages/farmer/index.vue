@@ -14,7 +14,7 @@
         class="farmer"
         :key="index"
       >
-        <UserIcon
+        <baseIcon
           cls="farmers_page_farmer_icon"
           :url="farmer.fields.farmerIcon.fields.file.url"
         />
@@ -27,13 +27,10 @@
 
 
 <script>
-import UserIcon from "~/components/UserIcon";
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    UserIcon
-  },
+  components: {},
   async fetch({ store }) {
     await store.dispatch("farmers/getFarmersAction");
   },

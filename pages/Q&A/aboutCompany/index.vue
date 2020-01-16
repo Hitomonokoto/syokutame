@@ -65,38 +65,35 @@
     </div>
 
     <div class="link-list">
-      <basicButton class="qAndAlink" @emitClick="jumpToAboutCompany">
+      <baseButton class="qAndAlink" @emitClick="jumpToAboutCompany">
         <img src="@/assets/company.png" class="link-img" alt />会社情報
-      </basicButton>
+      </baseButton>
 
-      <basicButton class="qAndAlink" @emitClick="jumpToAboutGift">
+      <baseButton class="qAndAlink" @emitClick="jumpToAboutGift">
         <img src="@/assets/gift.png" class="link-img" alt />GIFTとは
-      </basicButton>
+      </baseButton>
 
-      <basicButton class="qAndAlink" @emitClick="jumpToAboutDiary">
+      <baseButton class="qAndAlink" @emitClick="jumpToAboutDiary">
         <img src="@/assets/diary.png" class="link-img" alt />Diaryについて
-      </basicButton>
+      </baseButton>
     </div>
     <div class="link-list">
-      <basicButton class="qAndAlink" @emitClick="jumpToAboutFamily">
+      <baseButton class="qAndAlink" @emitClick="jumpToAboutFamily">
         <img src="@/assets/family.png" class="link-img" alt />Familyとは
-      </basicButton>
+      </baseButton>
 
-      <basicButton class="qAndAlink" @emitClick="jumpToInfo">
+      <baseButton class="qAndAlink" @emitClick="jumpToInfo">
         <img src="@/assets/contact.png" class="link-img" alt />問い合わせ
-      </basicButton>
+      </baseButton>
 
-      <basicButton class="qAndAlink" @emitClick="jumpToEtc">その他</basicButton>
+      <baseButton class="qAndAlink" @emitClick="jumpToEtc">その他</baseButton>
     </div>
   </div>
 </template>
 
 <script>
-import basicButton from "~/components/BasicButton.vue";
 export default {
-  components: {
-    basicButton
-  },
+  components: {},
   methods: {
     jumpToAboutCompany() {
       this.$router.push("");

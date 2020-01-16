@@ -8,14 +8,9 @@
 
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-//その他
 import { mapState } from "vuex";
 export default {
-  components: {
-    linkButton
-  },
+  components: {},
   computed: mapState({ products: "products" })
 };
 </script>

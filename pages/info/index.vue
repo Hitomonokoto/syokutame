@@ -9,51 +9,41 @@
       <dl>
         <dt>お名前（ニックネーム可）</dt>
         <dd>
-          <basicInput cls="info" v-model="name" id="name" type="text" />
+          <baseInput cls="info" v-model="name" id="name" type="text" />
         </dd>
       </dl>
       <dl>
         <dt>メールアドレス</dt>
         <dd>
-          <basicInput cls="info" v-model="email" id="email" type="email" />
+          <baseInput cls="info" v-model="email" id="email" type="email" />
         </dd>
       </dl>
       <dl>
         <dt>タイトル</dt>
         <dd>
-          <basicInput cls="info" v-model="title" id="title" type="text" />
+          <baseInput cls="info" v-model="title" id="title" type="text" />
         </dd>
       </dl>
       <dl>
         <dt>お問い合わせ内容</dt>
         <dd>
-          <basicTextarea v-model="message" cls="info" id="message" />
+          <baseTextarea v-model="message" cls="info" id="message" />
         </dd>
       </dl>
       <p v-if="error" class="error_text">※未入力項目があります。</p>
       <div class="actions">
-        <basicButton cls="info_back_btn" @emitClick="back">戻る</basicButton>
-        <basicButton cls="info_check_btn" @emitClick="checkForm">確認する</basicButton>
+        <baseButton cls="info_back_btn" @emitClick="back">戻る</baseButton>
+        <baseButton cls="info_check_btn" @emitClick="checkForm">確認する</baseButton>
       </div>
     </div>
   </main>
 </template>
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-import basicInput from "~/components/BasicInput";
-import basicTextarea from "~/components/BasicTextarea";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    linkButton,
-    basicInput,
-    basicTextarea
-  },
+  components: {},
   data() {
     return {
       name: null,

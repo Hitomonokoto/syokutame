@@ -4,13 +4,13 @@
       <dl>
         <dt>名前</dt>
         <dd>
-          <basicInput
+          <baseInput
             cls="edit_user_name"
             type="text"
             v-model="lastName"
             placeholder="姓"
           />
-          <basicInput
+          <baseInput
             cls="edit_user_name"
             type="text"
             v-model="firstName"
@@ -21,32 +21,27 @@
       <dl>
         <dt>メールアドレス</dt>
         <dd>
-          <basicInput cls="edit_email" type="text" v-model="email" />
+          <baseInput cls="edit_email" type="text" v-model="email" />
         </dd>
       </dl>
     </div>
 
     <div class="actions">
-      <basicButton cls="basic_info_edit_back_btn" @emitClick="back">戻る</basicButton>
-      <basicButton
+      <baseButton cls="basic_info_edit_back_btn" @emitClick="back">戻る</baseButton>
+      <baseButton
         cls="basic_info_edit_update_btn"
         @emitClick="customerUpdate"
-      >変更する</basicButton>
+      >変更する</baseButton>
     </div>
   </div>
 </template>
 
 <script>
-// コンポーネント
-import basicInput from "~/components/BasicInput";
-
 // その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    basicInput
-  },
+  components: {},
   data() {
     return {
       lastName: this.auth.user.lastName,

@@ -1,8 +1,6 @@
 <template>
   <button class="basic" :class="cls" @click="onClick">
-    <div v-if="icon">
-      <img class="icon" :src="'/naviIcon/'+icon+'.svg'" alt />
-    </div>
+    <img v-if="icon" class="icon" :src="'/naviIcon/'+icon+'.svg'" />
     <slot />
   </button>
 </template>
@@ -16,11 +14,19 @@ export default {
     icon: {
       type: String,
       default: ""
+    },
+    link: {
+      type: String,
+      default: ""
     }
   },
   methods: {
     onClick() {
-      this.$emit("emitClick");
+      if (this.link) {
+        this.$router.push(this.link);
+      } else {
+        this.$emit("emitClick");
+      }
     }
   }
 };

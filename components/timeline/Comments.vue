@@ -1,7 +1,7 @@
 <template>
   <div class="comments">
     <div v-if="this.auth.token" class="send_comment">
-      <userIcon cls="send_comment_icon" :url="auth.user.user_icon" />
+      <baseIcon cls="send_comment_icon" :url="auth.user.user_icon" />
       <textarea
         v-model="new_comment"
         class="write_comment"
@@ -11,13 +11,13 @@
         @keydown="adjustHeight"
       ></textarea>
       <div>
-        <basicButton cls="send_btn" @emitClick="sendComment">送信</basicButton>
+        <baseButton cls="send_btn" @emitClick="sendComment">送信</baseButton>
       </div>
     </div>
 
     <div class="comment_list" v-for="(comment, index) in comments" :key="index">
       <div v-if="login_user_id != comment.user_id" class="comment">
-        <userIcon cls="commenter_icon" :url="comment.user_icon" />
+        <baseIcon cls="commenter_icon" :url="comment.user_icon" />
         <div class="comment_main">
           <p class="nickname">{{ comment.name }}</p>
           <div class="comment_background">
@@ -36,13 +36,13 @@
           </div>
           <div class="time_and_delete">
             <p class="time_i">{{ comment.created.seconds | timestampToDate }}</p>
-            <basicButton
+            <baseButton
               cls="comment_delete_btn"
               @emitClick="commentDelete(comment)"
-            >削除</basicButton>
+            >削除</baseButton>
           </div>
         </div>
-        <userIcon cls="commenter_icon_i" :url="comment.user_icon" />
+        <baseIcon cls="commenter_icon_i" :url="comment.user_icon" />
       </div>
     </div>
   </div>
@@ -51,13 +51,12 @@
 <script>
 // コンポーネント
 import adjustedTextarea from "~/components/AdjustedTextarea";
-import userIcon from "~/components/UserIcon";
 
 // その他
 import { mapState } from "vuex";
 
 export default {
-  components: { adjustedTextarea, userIcon },
+  components: { adjustedTextarea },
   data() {
     return {
       new_comment: null

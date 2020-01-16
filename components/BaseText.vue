@@ -9,7 +9,10 @@
     fontWeight: isWeight ? 'bold': 'nomal'
   }"
   >
-    <slot />
+    <slot v-if="!link" />
+    <nuxt-link v-if="link" :to="link" :class="{[color]: true}">
+      <slot />
+    </nuxt-link>
   </p>
 </template>
 
@@ -18,7 +21,7 @@ export default {
   props: {
     color: {
       type: String,
-      default: ""
+      default: "black"
     },
     other: {
       type: String,
@@ -31,12 +34,19 @@ export default {
     isWeight: {
       type: Boolean,
       default: false
+    },
+    link: {
+      type: String,
+      default: ""
     }
   }
 };
 </script>
 
 <style scoped>
+.black {
+  color: black;
+}
 @media screen and (min-width: 960px) {
 }
 </style>

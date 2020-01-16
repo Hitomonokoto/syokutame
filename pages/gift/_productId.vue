@@ -1,7 +1,7 @@
 <template>
   <main>
-    <mainImage
-      cls="basic"
+    <baseImage
+      class="main_img"
       :src="Products.product.fields.mainImage.fields.file.url"
     />
     <div class="top_checkout_area">
@@ -24,24 +24,19 @@
       </div>
       <p class="checkout_product_name">{{ Products.product.fields.productName }}</p>
       <p class="checkout_price">12,000円/年</p>
-      <basicButton cls="checkout_btn" @emitClick="checkout">購入する</basicButton>
+      <baseButton cls="checkout_btn" @emitClick="checkout">購入する</baseButton>
     </div>
     <iconAndTextButton cls="about_gift_btn" text="ギフトとは" icon="gift_pink" />
   </main>
 </template>
 
 <script>
-// コンポーネント
-import mainImage from "~/components/MainImage";
 import description from "~/components/farmer&product/Description";
 import farmer from "~/components/farmer&product/Farmer";
-
-//その他
 import { mapState } from "vuex";
 
 export default {
   components: {
-    mainImage,
     description,
     farmer
   },

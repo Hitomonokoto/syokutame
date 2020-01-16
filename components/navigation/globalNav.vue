@@ -3,13 +3,13 @@
     <div class="top_nav">
       <div v-if="Uid">
         <nuxt-link class="top_nav_left" to="/user">
-          <UserIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseIcon cls="global_nav_icon" url="samplein.jpg" />
           <baseText class="user_name">{{ User.nickname }}</baseText>
         </nuxt-link>
       </div>
       <div v-if="!Uid">
         <nuxt-link class="top_nav_left" to="/signIn">
-          <UserIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseIcon cls="global_nav_icon" url="samplein.jpg" />
           <baseText class="user_name">ログイン</baseText>
         </nuxt-link>
       </div>
@@ -62,14 +62,12 @@
 
 <script>
 import NavItem from "~/components/navigation/navItem";
-import UserIcon from "~/components/UserIcon";
 import { getTitle } from "~/titles";
 import { mapGetters } from "vuex";
 
 export default {
   components: {
-    NavItem,
-    UserIcon
+    NavItem
   },
   data() {
     return {

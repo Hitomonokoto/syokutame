@@ -4,14 +4,14 @@
       <img src="~/assets/mainlogo2.png" alt />
     </div>
 
-    <basicInput
+    <baseInput
       v-model="email"
       cls="login"
       type="email"
       placeholder="メールアドレス"
       id="email"
     />
-    <basicInput
+    <baseInput
       v-model="password"
       cls="login"
       type="password"
@@ -23,23 +23,20 @@
       class="error_text"
       :errorType="errorType"
     />
-    <basicButton class="login_btn" @emitClick="signIn">ログイン</basicButton>
-    <basicButton
+    <baseButton class="login_btn" @emitClick="signIn">ログイン</baseButton>
+    <baseButton
       class="foget_pass_btn"
       @emitClick="passWordReset"
-    >パスワードをお忘れの方はこちら</basicButton>
-    <linkButton cls="regist_btn" linkTo="/signUp" text="新規登録" />
+    >パスワードをお忘れの方はこちら</baseButton>
+    <baseButton cls="about_gift" icon="giftWhite" link="/signUp">新規登録</baseButton>
   </main>
 </template>
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-import basicInput from "~/components/BasicInput";
 import ErrorMessage from "~/components/ErrorMessage";
 
 export default {
-  components: { linkButton, basicInput, ErrorMessage },
+  components: { ErrorMessage },
   data() {
     return {
       email: "",

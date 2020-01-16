@@ -7,11 +7,11 @@
         size="14px"
       >価値観を共有する詰め合わせを提案致します。お気に入りの生産者と一緒に夢を描きましょう。</baseText>
     </section>
-    <basicButton
+    <baseButton
       v-if="!isPostForm && !isPostEditForm"
       cls="post_btn"
       @emitClick="post"
-    >Diaryを書く</basicButton>
+    >Diaryを書く</baseButton>
     <postList
       v-if="!isPostForm && !isPostEditForm"
       :posts="timeline.posts"

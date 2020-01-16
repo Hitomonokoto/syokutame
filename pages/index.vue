@@ -1,13 +1,13 @@
 <template>
   <main>
-    <mainImage cls="top_img" url="/mainImage/top-img.jpg" />
+    <baseImage class="main_img" url="/mainImage/top-img.jpg" />
     <div class="beginner_area">
-      <basicButton
+      <baseButton
         v-if="!Uid"
         cls="about_shokutame_btn"
         icon="beginner_w"
         @emitClick="goToAboutSyokutame"
-      >初めての方はこちら</basicButton>
+      >初めての方はこちら</baseButton>
     </div>
   </main>
 </template>
@@ -15,13 +15,10 @@
 
 
 <script>
-import mainImage from "~/components/MainImage";
 import { mapGetters } from "vuex";
 
 export default {
-  components: {
-    mainImage
-  },
+  components: {},
   data() {
     return {};
   },

@@ -24,8 +24,8 @@
       </div>
     </div>
     <div class="actions">
-      <basicButton class="info_edit_btn" @emitClick="editForm">修正する</basicButton>
-      <basicButton class="info_send_btn" @emitClick="sendForm">送信する</basicButton>
+      <baseButton class="info_edit_btn" @emitClick="editForm">修正する</baseButton>
+      <baseButton class="info_send_btn" @emitClick="sendForm">送信する</baseButton>
     </div>
   </main>
 </template>

@@ -20,22 +20,16 @@
         フォローしている創り手がいません。
         <br />お気に入りの創り手をフォローして繋がりましょう。
       </p>
-      <linkButton cls="farmer_search" linkTo="/farmers" text="創り手を探す" />
+      <baseButton cls="about_gift" icon="giftWhite" link="/farmers">創り手を探す</baseButton>
     </div>
   </div>
 </template>
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    linkButton
-  },
+  components: {},
   methods: {
     unsubscribe() {
       this.$router.push("/unsubscribe");

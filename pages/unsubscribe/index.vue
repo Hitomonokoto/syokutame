@@ -1,6 +1,6 @@
 <template>
   <main>
-    <mainImage cls="basic" url="/mainImage/top-img.jpg" />
+    <baseImage class="main_img" url="/mainImage/top-img.jpg" />
     <h1>退会</h1>
     <p class="top_text">
       本サービスをご利用頂き、誠にありがとうございました。
@@ -27,26 +27,21 @@
     <dl>
       <dt>上記退会理由の詳細や、その他のご意見等ございましたらご記入下さい。</dt>
       <dd>
-        <basicTextarea v-model="message" cls="unsubscribe" />
+        <baseTextarea v-model="message" cls="unsubscribe" />
       </dd>
     </dl>
     <div class="actions">
-      <basicButton cls="unsubscribe_back_btn" @emitClick="back">戻る</basicButton>
-      <basicButton cls="unsubscribe_btn" @emitClick="unsub">退会する</basicButton>
+      <baseButton cls="unsubscribe_back_btn" @emitClick="back">戻る</baseButton>
+      <baseButton cls="unsubscribe_btn" @emitClick="unsub">退会する</baseButton>
     </div>
   </main>
 </template>
 
 <script>
-// コンポーネント
-import mainImage from "~/components/MainImage";
-import basicTextarea from "~/components/BasicTextarea";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: { mainImage, basicTextarea },
+  components: {},
   data() {
     return {
       message: ""

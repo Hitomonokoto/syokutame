@@ -1,16 +1,16 @@
 <template>
   <div class="postEditForm">
     <div class="user">
-      <userIcon cls="post_edit_icon" :url="auth.user.user_icon" />
+      <baseIcon cls="post_edit_icon" :url="auth.user.user_icon" />
       <div class="name_and_back">
         <p class="nickname">{{name}}</p>
         <div class="actions">
-          <basicButton cls="back_btn" @emitClick="back">戻る</basicButton>
-          <basicButton cls="update_btn" @emitClick="updatePost">更新する</basicButton>
+          <baseButton cls="back_btn" @emitClick="back">戻る</baseButton>
+          <baseButton cls="update_btn" @emitClick="updatePost">更新する</baseButton>
         </div>
       </div>
     </div>
-    <basicInput
+    <baseInput
       cls="post_title"
       v-model="title"
       type="text"
@@ -19,11 +19,11 @@
     />
     <div class="img_area">
       <img class="post_img" :src="this.fileUrl" />
-      <basicButton
+      <baseButton
         v-show="this.fileUrl"
         cls="post_img_delete_btn"
         @emitClick="fileDalete"
-      >×</basicButton>
+      >×</baseButton>
     </div>
     <!-- <adjustedTextarea
       v-model="text"
@@ -52,16 +52,13 @@
       />
     </label>
     <div class="delete_area">
-      <basicButton cls="post_delete_btn" @emitClick="deletePost">投稿を削除する</basicButton>
+      <baseButton cls="post_delete_btn" @emitClick="deletePost">投稿を削除する</baseButton>
     </div>
   </div>
 </template>
 
 <script>
-// コンポーネント
-import basicInput from "~/components/BasicInput";
 import adjustedTextarea from "~/components/AdjustedTextarea";
-import userIcon from "~/components/UserIcon";
 
 // その他
 import { mapState } from "vuex";
@@ -69,9 +66,7 @@ import uuid from "uuid";
 
 export default {
   components: {
-    basicInput,
-    adjustedTextarea,
-    userIcon
+    adjustedTextarea
   },
   data() {
     return {

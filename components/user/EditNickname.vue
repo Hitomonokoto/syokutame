@@ -2,32 +2,24 @@
   <div class="edit_nickname_area">
     <p>新しいニックネームを入力してください。</p>
     <div>
-      <basicInput cls="edit_nickname" type="text" v-model="new_nickname" />
+      <baseInput cls="edit_nickname" type="text" v-model="new_nickname" />
     </div>
 
     <div class="actions">
-      <basicButton cls="nickname_edit_back_btn" @emitClick="back">戻る</basicButton>
-      <basicButton
+      <baseButton cls="nickname_edit_back_btn" @emitClick="back">戻る</baseButton>
+      <baseButton
         cls="nickname_edit_update_btn"
         @emitClick="changeNickname"
-      >変更する</basicButton>
+      >変更する</baseButton>
     </div>
   </div>
 </template>
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-import basicInput from "~/components/BasicInput";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    linkButton,
-    basicInput
-  },
+  components: {},
   data() {
     return {
       new_nickname: null,

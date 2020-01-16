@@ -1,6 +1,6 @@
 <template>
   <main>
-    <mainImage cls="basic" url="/mainImage/mainDamy1.jpg" />
+    <baseImage class="main_img" url="/mainImage/mainDamy1.jpg" />
     <h1>私たちについて</h1>
     <p>
       このページは運営側（株式会社ヒトとモノとコト）の紹介ページになります。
@@ -14,12 +14,8 @@
 </template>
 
 <script>
-import mainImage from "~/components/MainImage";
-
 export default {
-  components: {
-    mainImage
-  }
+  components: {}
 };
 </script>
 <style scoped>

@@ -12,28 +12,21 @@
         <div class="summary" v-html="farmers.farmer.fields.summary"></div>
       </div>
     </div>
-
-    <linkButton
-      cls="readmore_btn"
-      :linkTo="'/farmers/farmer/'+farmers.farmer.sys.id"
-      text="もっと知る"
-    />
+    <baseButton
+      cls="about_gift"
+      icon="giftWhite"
+      :link="'/farmers/farmer/'+farmers.farmer.sys.id"
+    >もっと知る</baseButton>
   </div>
 </template>
 
 
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    linkButton
-  },
+  components: {},
   computed: mapState({
     farmers: state => state.farmers
   })

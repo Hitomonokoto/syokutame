@@ -11,7 +11,7 @@
             <p>{{ Login.user.nickname }}</p>
           </dd>
         </dl>
-        <basicButton cls="account_edit_btn" @emitClick="editBasicData">ニックネームを編集</basicButton>
+        <baseButton cls="account_edit_btn" @emitClick="editBasicData">ニックネームを編集</baseButton>
       </div>
       <editNickname />
       <div class="data_area">
@@ -21,10 +21,7 @@
             <p>{{ user_data.email }}</p>
           </dd>
         </dl>
-        <basicButton
-          cls="account_edit_btn"
-          @emitClick="editBasicData"
-        >メールアドレスを編集</basicButton>
+        <baseButton cls="account_edit_btn" @emitClick="editBasicData">メールアドレスを編集</baseButton>
       </div>
     </div>
   </div>

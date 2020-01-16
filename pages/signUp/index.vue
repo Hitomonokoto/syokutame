@@ -1,14 +1,14 @@
 <template>
   <main>
     <h1 class="page_title">新規登録</h1>
-    <basicButton cls="about_gift" icon="giftWhite">ファミリーとは</basicButton>
+    <baseButton cls="about_gift" icon="giftWhite">ファミリーとは</baseButton>
     <div class="regist_form">
       <dl>
         <dt>
           <baseText class="input_item" size="12px" isWeight="true">ニックネーム</baseText>
         </dt>
         <dd>
-          <basicInput cls="regist_type2" type="text" v-model="nickname" />
+          <baseInput cls="regist_type2" type="text" v-model="nickname" />
         </dd>
       </dl>
       <dl>
@@ -16,7 +16,7 @@
           <baseText class="input_item" size="12px" isWeight="true">メールアドレス</baseText>
         </dt>
         <dd>
-          <basicInput
+          <baseInput
             cls="regist_type2"
             type="email"
             v-model="email"
@@ -29,7 +29,7 @@
           <baseText class="input_item" size="12px" isWeight="true">パスワード</baseText>
         </dt>
         <dd>
-          <basicInput
+          <baseInput
             cls="regist_type2"
             type="password"
             v-model="password"
@@ -42,7 +42,7 @@
           <baseText class="input_item" size="12px" isWeight="true">パスワード（確認用）</baseText>
         </dt>
         <dd>
-          <basicInput
+          <baseInput
             cls="regist_type2"
             type="password"
             v-model="passwordCheck"
@@ -56,7 +56,7 @@
       class="error_text"
       :errorType="errorType"
     />
-    <basicButton cls="regist_btn" @emitClick="signUp">登録</basicButton>
+    <baseButton cls="regist_btn" @emitClick="signUp">登録</baseButton>
   </main>
 </template>
 
@@ -64,11 +64,10 @@
 
 <script>
 // コンポーネント
-import basicInput from "~/components/BasicInput";
 import ErrorMessage from "~/components/ErrorMessage";
 
 export default {
-  components: { basicInput, ErrorMessage },
+  components: { ErrorMessage },
 
   data() {
     return {

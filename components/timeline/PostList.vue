@@ -2,24 +2,26 @@
   <div class="posts">
     <div class="post" v-for="(post, index) in posts" :key="index">
       <div class="head">
-        <nuxt-link :to="'/farmers/farmer/'+post.farmer_id">
-          <userIcon cls="post_icon" :url="post.user_icon" />
-        </nuxt-link>
-
+        <baseIcon
+          cls="post_icon"
+          :url="post.user_icon"
+          :link="'/farmers/farmer/'+post.farmer_id"
+        />
         <div class="user_name_and_posted_time">
-          <nuxt-link :to="'/farmers/farmer/'+post.farmer_id">
-            <baseText class="user_name" size="14px">{{ post.name }}</baseText>
-          </nuxt-link>
-
+          <baseText
+            class="user_name"
+            size="14px"
+            :link="'/farmers/farmer/'+post.farmer_id"
+          >{{ post.name }}</baseText>
           <p class="posted_time">{{ post.created.seconds | timestampToDate }}</p>
         </div>
         <div class="edit_btn">
-          <basicButton cls="post_edit_btn" @emitClick="edit(post)">編集</basicButton>
-          <!-- <basicButton
+          <baseButton cls="post_edit_btn" @emitClick="edit(post)">編集</baseButton>
+          <!-- <baseButton
         v-if="this.auth.user_id == user_id"
         cls="post_edit_btn"
         @emitClick="edit"
-          >編集</basicButton>-->
+          >編集</baseButton>-->
         </div>
       </div>
 
@@ -61,7 +63,6 @@
 // コンポーネント
 import postActions from "~/components/timeline/PostActions";
 import comments from "~/components/timeline/Comments";
-import userIcon from "~/components/UserIcon";
 
 // その他
 import { mapGetters } from "vuex";
@@ -69,8 +70,7 @@ import { mapGetters } from "vuex";
 export default {
   components: {
     postActions,
-    comments,
-    userIcon
+    comments
   },
   data() {
     return {

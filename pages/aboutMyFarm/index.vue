@@ -11,19 +11,13 @@
       <br />
       <br />下のボタンから登録フォームにアクセス出来ます。
     </p>
-    <linkButton cls="partner_btn" linkTo="/signUp" text="ファミリーになる" />
+    <baseButton cls="about_gift" icon="giftWhite" link="/signUp">ファミリーになる</baseButton>
   </main>
 </template>
 
 <script>
-import mainImage from "~/components/MainImage";
-import linkButton from "~/components/LinkButton";
-
 export default {
-  components: {
-    mainImage,
-    linkButton
-  }
+  components: {}
 };
 </script>
 <style scoped>

@@ -3,7 +3,7 @@
     <div v-show="auth.token" class="send_comment">
       <textarea v-model="comment"></textarea>
       <div class="send_comment">
-        <basicButton @emitClick="update">更新</basicButton>
+        <baseButton @emitClick="update">更新</baseButton>
       </div>
     </div>
   </div>

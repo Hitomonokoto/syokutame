@@ -18,11 +18,11 @@
       </div>
     </nuxt-link>
     <P class="product_name">{{products.productsByfarmer[0].fields.productName}}</P>
-    <linkButton
-      cls="product_btn"
-      :linkTo="'/products/product/'+products.productsByfarmer[0].sys.id"
-      text="詳しく見る"
-    />
+    <baseButton
+      cls="about_gift"
+      icon="giftWhite"
+      :link="'/products/product/'+products.productsByfarmer[0].sys.id"
+    >詳しく見る</baseButton>
     <iconAndTextButton cls="about_gift_btn" text="ギフトとは" icon="gift_pink" />
   </div>
 </template>
@@ -30,16 +30,10 @@
 
 
 <script>
-// コンポーネント
-import linkButton from "~/components/LinkButton";
-
-// その他
 import { mapState } from "vuex";
 
 export default {
-  components: {
-    linkButton
-  },
+  components: {},
   computed: mapState({
     products: state => state.products
   })
