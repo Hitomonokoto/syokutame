@@ -10,9 +10,14 @@
   }"
   >
     <slot v-if="!link" />
-    <nuxt-link v-if="link" :to="link" :class="{[color]: true}">
+    <span
+      v-if="link"
+      class="link_basic"
+      :class="{[color]: true }"
+      @click="routerPush"
+    >
       <slot />
-    </nuxt-link>
+    </span>
   </p>
 </template>
 
@@ -39,11 +44,21 @@ export default {
       type: String,
       default: ""
     }
+  },
+  methods: {
+    routerPush() {
+      if (this.link) {
+        this.$router.push(this.link);
+      }
+    }
   }
 };
 </script>
 
 <style scoped>
+.link_basic {
+  cursor: pointer;
+}
 .black {
   color: black;
 }

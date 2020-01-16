@@ -1,15 +1,15 @@
 <template>
   <div class="container">
-    <GlobalNav />
+    <navigation />
     <nuxt />
   </div>
 </template>
 
 <script>
-import GlobalNav from "~/components/navigation/globalNav";
+import navigation from "~/components/Navigation";
 export default {
   components: {
-    GlobalNav
+    navigation
   },
   data() {
     return {};

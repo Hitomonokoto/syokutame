@@ -1,26 +1,26 @@
 <template>
   <div>
-    <div class="top_nav">
+    <header class="header">
       <div v-if="Uid">
-        <nuxt-link class="top_nav_left" to="/user">
+        <nuxt-link class="header_left" to="/user">
           <baseIcon cls="global_nav_icon" url="samplein.jpg" />
           <baseText class="user_name">{{ User.nickname }}</baseText>
         </nuxt-link>
       </div>
       <div v-if="!Uid">
-        <nuxt-link class="top_nav_left" to="/signIn">
+        <nuxt-link class="header_left" to="/signIn">
           <baseIcon cls="global_nav_icon" url="samplein.jpg" />
           <baseText class="user_name">ログイン</baseText>
         </nuxt-link>
       </div>
 
       <p class="title">{{ getTitle }}</p>
-      <div class="top_nav_right">
+      <div class="header_right">
         <img class="hamburger" src="naviIcon/menu_gry.svg" alt />
       </div>
-    </div>
+    </header>
 
-    <div class="bottom_nav">
+    <footer class="footer">
       <NavItem
         linkPath="/"
         iconBlack="homeBlack"
@@ -56,12 +56,12 @@
         iconGreen="farmerGreen"
         text="FARMER"
       />
-    </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import NavItem from "~/components/navigation/navItem";
+import NavItem from "~/components/NavItem";
 import { getTitle } from "~/titles";
 import { mapGetters } from "vuex";
 
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style scoped>
-.top_nav {
+.header {
   position: fixed;
   top: 0;
   z-index: 10;
@@ -111,13 +111,13 @@ export default {
   border-bottom: 1px solid lightgray;
 }
 
-.top_nav_left,
-.top_nav_right {
+.header_left,
+.header_right {
   width: 50px;
   height: 50px;
 }
 
-.top_nav_left {
+.header_left {
   display: flex;
 }
 
@@ -131,7 +131,7 @@ export default {
   margin: auto 0px;
 }
 
-.bottom_nav {
+.footer {
   position: fixed;
   bottom: 0;
   z-index: 10;
@@ -149,12 +149,12 @@ export default {
   .title {
     margin-left: 50px;
   }
-  .top_nav_left {
+  .header_left {
     width: 250px;
     border-right: 1px solid lightgray;
   }
 
-  .top_nav_right {
+  .header_right {
     border-left: 1px solid lightgray;
   }
 
@@ -162,7 +162,7 @@ export default {
     display: inline;
   }
 
-  .bottom_nav {
+  .footer {
     position: fixed;
     top: 0px;
     width: 250px;
