@@ -10,29 +10,17 @@
       <baseButton v-if="isFollow" cls="followed_btn" @emitClick="follow">フォロー中</baseButton>
     </div>
     <div class="index">
-      <div
-        class="index_btn index_story opend"
-        id="index_story"
-        @click="openStory"
-      >Story</div>
-      <div
-        class="index_btn index_timeline"
-        id="index_timeline"
-        @click="openTimeline"
-      >Diary</div>
-      <div
-        class="index_btn index_products"
-        id="index_products"
-        @click="openProducts"
-      >Gift</div>
+      <baseButton @emitClick="openStory" :isOpen='isStory'>Story</baseButton>
+      <baseButton @emitClick="openDiary" :isOpen='isDiary'>Diary</baseButton>
+      <baseButton @emitClick="openGift" :isOpen='isGift'>Gift</baseButton>
     </div>
     <div class="contents_area" v-show="isStory">
       <story :content="Farmers.farmer.fields.story" />
     </div>
-    <div class="contents_area" v-show="isTimeline">
+    <div class="contents_area" v-show="isDiary">
       <timeline />
     </div>
-    <div class="contents_area" v-show="isProducts">
+    <div class="contents_area" v-show="isGift">
       <products v-if="Products.productsByfarmer.length" />
     </div>
   </main>
@@ -54,8 +42,8 @@ export default {
     return {
       products: [],
       isStory: true,
-      isTimeline: false,
-      isProducts: false,
+      isDiary: false,
+      isGift: false,
       isFollow: false
     };
   },
@@ -102,27 +90,18 @@ export default {
     },
     openStory() {
       this.isStory = true;
-      this.isTimeline = false;
-      this.isProducts = false;
-      document.getElementById("index_story").classList.add("opend");
-      document.getElementById("index_timeline").classList.remove("opend");
-      document.getElementById("index_products").classList.remove("opend");
+      this.isDiary = false;
+      this.isGift = false;
     },
-    openTimeline() {
+    openDiary() {
       this.isStory = false;
-      this.isTimeline = true;
-      this.isProducts = false;
-      document.getElementById("index_story").classList.remove("opend");
-      document.getElementById("index_timeline").classList.add("opend");
-      document.getElementById("index_products").classList.remove("opend");
+      this.isDiary = true;
+      this.isGift = false;
     },
-    openProducts() {
+    openGift() {
       this.isStory = false;
-      this.isTimeline = false;
-      this.isProducts = true;
-      document.getElementById("index_story").classList.remove("opend");
-      document.getElementById("index_timeline").classList.remove("opend");
-      document.getElementById("index_products").classList.add("opend");
+      this.isDiary = false;
+      this.isGift = true;
     }
   },
   computed: mapState({
@@ -138,7 +117,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang='scss' scoped>
 .top_area {
   width: 80%;
   position: relative;
@@ -148,39 +127,20 @@ export default {
   display: flex;
   justify-content: center;
 }
-@media screen and (max-width: 960px) {
-  .top_area {
-    width: 100%;
-  }
-}
+
 .index {
   width: 100%;
   display: flex;
-  box-shadow: 0px 3px 3px -3px #797979;
   margin-bottom: 50px;
-}
-.index_btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 40px;
-  cursor: pointer;
+  border-bottom: 1px solid $border;
+  position:sticky;
+  top:50px;
 }
 
-.index_story {
-  width: 34%;
-}
-.index_timeline {
-  width: 33%;
-}
-.index_products {
-  width: 33%;
-}
-.opend {
-  background-color: #b5c97c;
-  color: white;
-}
 .contents_area {
   width: 100%;
+}
+
+@media screen and (min-width: 960px) {
 }
 </style>

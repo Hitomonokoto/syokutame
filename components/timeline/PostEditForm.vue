@@ -43,7 +43,7 @@
     ></textarea>
 
     <label for="picture">
-      <iconAndTextButton cls="insert_img" text="画像を挿入する" icon="picture" />
+      <baseButton cls="about_gift" icon="giftWhite">画像を挿入する</baseButton>
       <input
         class="picture"
         id="picture"

@@ -1,5 +1,5 @@
 <template>
-  <button class="basic" :class="cls" @click="onClick">
+  <button class="basic" :class="[cls, {index_btn: !isOpen},{opend: isOpen}]" @click="onClick">
     <img v-if="icon" class="icon" :src="'/naviIcon/'+icon+'.svg'" />
     <slot />
   </button>
@@ -18,6 +18,10 @@ export default {
     link: {
       type: String,
       default: ""
+    },
+    isOpen:{
+      type:Boolean,
+      default:false
     }
   },
   methods: {
@@ -36,13 +40,26 @@ export default {
 .basic {
   color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
+  outline:none;
+  background-color:$white;
 }
 .icon {
   width: 20px;
   height: 20px;
   margin-right: 5px;
+}
+
+.index_btn {
+  color: $black;
+  width: calc(100% / 3) ;
+  height: 40px;
+}
+
+.opend{
+  color: $black;
+  width: calc(100% / 3) ;
+  height: 40px;
+  color: #b5c97c;
 }
 
 /* アイコン入りボタン共通ーーーー */
@@ -222,23 +239,15 @@ export default {
   background-color: $pink;
 }
 
-@media screen and (max-width: 960px) {
-  .qAndAlink {
-    width: 100%;
-    margin-bottom: 30px;
-  }
-  .follow_btn {
-    position: absolute;
-    top: -70px;
-    right: 20px;
-  }
+@media screen and (min-width: 560px) {
 }
-@media screen and (max-width: 560px) {
-  .follow_btn {
-    padding: 10px 10px;
-    position: absolute;
-    top: -65px;
-    right: 10px;
+
+@media screen and (min-width: 960px) {
+  .index_btn {
+    &:hover{
+      color:$white;
+      background-color:$green;
+    }
   }
 }
 </style>

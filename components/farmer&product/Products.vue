@@ -14,7 +14,7 @@
         <img
           :src="products.productsByfarmer[0].fields.mainImage.fields.file.url"
         />
-        <iconAndTextButton cls="checkout_btn" text="購入する" icon="gift_w" />
+        <baseButton cls="about_gift" icon="giftWhite">購入する</baseButton>
       </div>
     </nuxt-link>
     <P class="product_name">{{products.productsByfarmer[0].fields.productName}}</P>
@@ -23,7 +23,7 @@
       icon="giftWhite"
       :link="'/products/product/'+products.productsByfarmer[0].sys.id"
     >詳しく見る</baseButton>
-    <iconAndTextButton cls="about_gift_btn" text="ギフトとは" icon="gift_pink" />
+    <baseButton cls="about_gift" icon="giftWhite">ギフトとは</baseButton>
   </div>
 </template>
 

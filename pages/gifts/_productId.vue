@@ -6,11 +6,7 @@
     />
     <div class="top_checkout_area">
       <span @click="checkout">
-        <iconAndTextButton
-          cls="product_page_checkout_btn"
-          text="購入する"
-          icon="gift_w"
-        />
+        <baseButton cls="about_gift" icon="giftWhite">購入する</baseButton>
       </span>
     </div>
     <description />
@@ -26,7 +22,7 @@
       <p class="checkout_price">12,000円/年</p>
       <baseButton cls="checkout_btn" @emitClick="checkout">購入する</baseButton>
     </div>
-    <iconAndTextButton cls="about_gift_btn" text="ギフトとは" icon="gift_pink" />
+    <baseButton cls="about_gift" icon="giftWhite">ギフトとは</baseButton>
   </main>
 </template>
 

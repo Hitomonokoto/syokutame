@@ -10,7 +10,7 @@
     <div class="farmers">
       <nuxt-link
         v-for="(farmer, index) in this.farmers.farmers"
-        :to="'/farmers/farmer/'+farmer.sys.id"
+        :to="'/farmers/'+farmer.sys.id"
         class="farmer"
         :key="index"
       >

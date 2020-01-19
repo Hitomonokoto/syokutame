@@ -3,20 +3,20 @@
     <header class="header">
       <div v-if="Uid">
         <nuxt-link class="header_left" to="/user">
-          <baseIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseIcon cls="global_nav_icon" url="/samplein.jpg" />
           <baseText class="user_name">{{ User.nickname }}</baseText>
         </nuxt-link>
       </div>
       <div v-if="!Uid">
         <nuxt-link class="header_left" to="/signIn">
-          <baseIcon cls="global_nav_icon" url="samplein.jpg" />
+          <baseIcon cls="global_nav_icon" url="/samplein.jpg" />
           <baseText class="user_name">ログイン</baseText>
         </nuxt-link>
       </div>
 
       <p class="title">{{ getTitle }}</p>
       <div class="header_right">
-        <img class="hamburger" src="naviIcon/menu_gry.svg" alt />
+        <img class="hamburger" src="/naviIcon/menu_gry.svg" alt />
       </div>
     </header>
 
