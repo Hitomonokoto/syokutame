@@ -29,7 +29,7 @@
         text="HOME"
       />
       <NavItem
-        linkPath="/gift"
+        linkPath="/gifts"
         iconBlack="giftBlack"
         iconWhite="giftWhite"
         iconGreen="giftGreen"
@@ -50,7 +50,7 @@
         text="STAMP"
       />
       <NavItem
-        linkPath="/farmer"
+        linkPath="/farmers"
         iconBlack="farmerBlack"
         iconWhite="farmerWhite"
         iconGreen="farmerGreen"

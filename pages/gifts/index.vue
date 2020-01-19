@@ -42,9 +42,6 @@ export default {
     await store.dispatch("products/getProductsAction");
   },
   methods: {},
-  head: {
-    title: "生産者紹介"
-  },
   computed: mapState({ products: "products" }),
   head() {
     return {
