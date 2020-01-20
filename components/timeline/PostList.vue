@@ -5,13 +5,13 @@
         <baseIcon
           cls="post_icon"
           :url="post.user_icon"
-          :link="'/farmers/farmer/'+post.farmer_id"
+          :link="'/farmers/'+post.farmer_id"
         />
         <div class="user_name_and_posted_time">
           <baseText
             class="user_name"
             size="14px"
-            :link="'/farmers/farmer/'+post.farmer_id"
+            :link="'/farmers/'+post.farmer_id"
           >{{ post.name }}</baseText>
           <p class="posted_time">{{ post.created.seconds | timestampToDate }}</p>
         </div>

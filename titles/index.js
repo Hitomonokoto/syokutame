@@ -15,17 +15,17 @@ export const getTitle = (path, { spaceName }) => {
         case TOP:
             return 'ショクタメ'
         case GIFT:
-            return 'GIFT'
+            return 'ギフト'
         case DIARY:
-            return 'DIARY'
+            return 'ダイアリー'
         case STAMP:
-            return 'STAMP'
+            return 'スタンプ'
         case FARMER:
-            return 'FARMER'
+            return '生産者'
         case SIGNIN:
             return 'ログイン'
         case SIGNUP:
-            return '新規登録'
+            return 'アカウント登録'
         case MYPAGE:
             return 'マイページ'
     }

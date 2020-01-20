@@ -1,11 +1,9 @@
 <template>
   <main>
-    <h1 class="page_title">新規登録</h1>
-    <baseButton cls="about_gift" icon="giftWhite">ファミリーとは</baseButton>
-    <div class="regist_form">
+    <form class="regist_form">
       <dl>
         <dt>
-          <baseText class="input_item" size="12px" isWeight="true">ニックネーム</baseText>
+          <baseText class="input_item" size="12px" :isWeight="true">ニックネーム</baseText>
         </dt>
         <dd>
           <baseInput cls="regist_type2" type="text" v-model="nickname" />
@@ -13,7 +11,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText class="input_item" size="12px" isWeight="true">メールアドレス</baseText>
+          <baseText class="input_item" size="12px" :isWeight="true">メールアドレス</baseText>
         </dt>
         <dd>
           <baseInput
@@ -26,7 +24,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText class="input_item" size="12px" isWeight="true">パスワード</baseText>
+          <baseText class="input_item" size="12px" :isWeight="true">パスワード</baseText>
         </dt>
         <dd>
           <baseInput
@@ -39,7 +37,7 @@
       </dl>
       <dl>
         <dt>
-          <baseText class="input_item" size="12px" isWeight="true">パスワード（確認用）</baseText>
+          <baseText class="input_item" size="12px" :isWeight="true">パスワード（確認用）</baseText>
         </dt>
         <dd>
           <baseInput
@@ -50,7 +48,7 @@
           />
         </dd>
       </dl>
-    </div>
+    </form>
     <ErrorMessage
       v-if="errorType!==0"
       class="error_text"
@@ -63,7 +61,6 @@
 
 
 <script>
-// コンポーネント
 import ErrorMessage from "~/components/ErrorMessage";
 
 export default {
@@ -153,6 +150,7 @@ export default {
 </script>
 
 <style scoped>
+
 .page_title {
   margin-bottom: 60px;
 }

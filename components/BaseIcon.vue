@@ -39,11 +39,8 @@ export default {
 }
 
 .gifts_page_farmer_icon {
-  position: absolute;
-  top: 5px;
-  width: 50px;
+  width: 40px;
   margin-right: 5px;
-  border: 5px solid white;
 }
 
 .farmers_page_farmer_icon {

@@ -14,10 +14,14 @@
       <nuxt-link
         class="gift"
         v-for="(product, index) in this.products.products"
-        :to="'/gift/'+product.sys.id"
+        :to="'/gifts/'+product.sys.id"
         :key="index"
       >
-        <div class="farmer">
+        <baseText class="gift_name">{{ product.fields.productName }}</baseText>
+
+        <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
+
+        <!-- <div class="gift_header">
           <baseIcon
             cls="gifts_page_farmer_icon"
             :url="product.fields.farmerIcon.fields.file.url"
@@ -26,9 +30,7 @@
             class="farmer_name"
             size="14px"
           >{{ product.fields.farmName }}</baseText>
-        </div>
-        <img class="gift_img" :src="product.fields.mainImage.fields.file.url" />
-        <baseText class="gift_name">{{ product.fields.productName }}</baseText>
+        </div>-->
       </nuxt-link>
     </section>
   </main>
@@ -62,25 +64,21 @@ export default {
   border-bottom: none;
 }
 
-.farmer {
+.gift_header {
   display: flex;
-  align-items: flex-start;
-  position: relative;
+  align-items: center;
+  margin-bottom: 5px;
 }
 
 .gift_img {
   width: 100%;
   border-radius: 5px;
+  margin-bottom: 5px;
 }
 
 .gift_name {
   text-align: center;
-  padding: 5px 0px;
-}
-
-.farmer_name {
-  margin-left: 50px;
-  padding: 5px 0px;
+  margin-bottom: 5px;
 }
 
 @media screen and (min-width: 560px) {

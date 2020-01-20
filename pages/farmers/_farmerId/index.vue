@@ -10,9 +10,9 @@
       <baseButton v-if="isFollow" cls="followed_btn" @emitClick="follow">フォロー中</baseButton>
     </div>
     <div class="index">
-      <baseButton @emitClick="openStory" :isOpen='isStory'>Story</baseButton>
-      <baseButton @emitClick="openDiary" :isOpen='isDiary'>Diary</baseButton>
-      <baseButton @emitClick="openGift" :isOpen='isGift'>Gift</baseButton>
+      <baseButton cls='farmer_page_index' @emitClick="openStory" :isOpen='isStory'>Story</baseButton>
+      <baseButton cls='farmer_page_index' @emitClick="openDiary" :isOpen='isDiary'>Diary</baseButton>
+      <baseButton cls='farmer_page_index' @emitClick="openGift" :isOpen='isGift'>Gift</baseButton>
     </div>
     <div class="contents_area" v-show="isStory">
       <story :content="Farmers.farmer.fields.story" />

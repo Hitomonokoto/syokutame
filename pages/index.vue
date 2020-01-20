@@ -4,7 +4,7 @@
     <div class="beginner_area">
       <baseButton
         v-if="!Uid"
-        cls="about_shokutame_btn"
+        cls="about_shokutame"
         icon="beginner_w"
         @emitClick="goToAboutSyokutame"
       >初めての方はこちら</baseButton>

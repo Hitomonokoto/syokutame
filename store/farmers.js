@@ -50,8 +50,8 @@ export const actions = {
         context.commit('getFarmer', serchData[0]);
     },
     // ひとりの生産者を取得
-    async getFarmerAction(context, payload) {
-        const entry = await client.getEntry(payload.businessId);
+    async getFarmerAction(context, params) {
+        const entry = await client.getEntry(params.farmerId);
         context.commit('getFarmer', entry);
 
     },

@@ -1,5 +1,5 @@
 <template>
-  <button class="basic" :class="[cls, {index_btn: !isOpen},{opend: isOpen}]" @click="onClick">
+  <button class="basic" :class="[cls,{opend: isOpen}]" @click="onClick">
     <img v-if="icon" class="icon" :src="'/naviIcon/'+icon+'.svg'" />
     <slot />
   </button>
@@ -42,6 +42,7 @@ export default {
   border: none;
   outline:none;
   background-color:$white;
+  border-radius:5px;
 }
 .icon {
   width: 20px;
@@ -49,10 +50,11 @@ export default {
   margin-right: 5px;
 }
 
-.index_btn {
+.farmer_page_index {
   color: $black;
   width: calc(100% / 3) ;
   height: 40px;
+  border-radius: 0;
 }
 
 .opend{
@@ -64,7 +66,7 @@ export default {
 
 /* アイコン入りボタン共通ーーーー */
 .about_gift,
-.about_shokutame_btn {
+.about_shokutame {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,7 +74,7 @@ export default {
 }
 /* ーーーーーーーーーーーーーーーー */
 
-.about_shokutame_btn {
+.about_shokutame {
   background-color: $pink;
 }
 
@@ -243,10 +245,17 @@ export default {
 }
 
 @media screen and (min-width: 960px) {
-  .index_btn {
+  .farmer_page_index {
     &:hover{
       color:$white;
       background-color:$green;
+    }
+  }
+
+  .opend {
+    &:hover{
+      color:$green;
+      background-color:$white;
     }
   }
 }
