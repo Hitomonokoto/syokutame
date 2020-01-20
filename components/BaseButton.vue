@@ -19,9 +19,9 @@ export default {
       type: String,
       default: ""
     },
-    isOpen:{
-      type:Boolean,
-      default:false
+    isOpen: {
+      type: Boolean,
+      default: false
     }
   },
   methods: {
@@ -40,9 +40,9 @@ export default {
 .basic {
   color: white;
   border: none;
-  outline:none;
-  background-color:$white;
-  border-radius:5px;
+  outline: none;
+  background-color: $white;
+  border-radius: 5px;
 }
 .icon {
   width: 20px;
@@ -52,15 +52,12 @@ export default {
 
 .farmer_page_index {
   color: $black;
-  width: calc(100% / 3) ;
+  width: calc(100% / 3);
   height: 40px;
   border-radius: 0;
 }
 
-.opend{
-  color: $black;
-  width: calc(100% / 3) ;
-  height: 40px;
+.opend {
   color: #b5c97c;
 }
 
@@ -201,7 +198,6 @@ export default {
 }
 .qAndAlink {
   background-color: #efefef;
-
   font-size: 15px;
   color: #000000;
   cursor: pointer;
@@ -246,16 +242,16 @@ export default {
 
 @media screen and (min-width: 960px) {
   .farmer_page_index {
-    &:hover{
-      color:$white;
-      background-color:$green;
+    &:hover {
+      color: $white;
+      background-color: $green;
     }
   }
 
   .opend {
-    &:hover{
-      color:$green;
-      background-color:$white;
+    &:hover {
+      color: $green;
+      background-color: $white;
     }
   }
 }

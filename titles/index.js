@@ -1,16 +1,15 @@
-import pathToRegexp from 'path-to-regexp'
 const TOP = "/";
 const GIFT = "/gifts";
+const GIFTT = "/gifts/.*"
 const DIARY = "/diary";
 const STAMP = "/stamp";
 const FARMER = "/farmers";
+const FARMERR = "/farmers/.*"
 const MYPAGE = "/user";
 const SIGNIN = "/signIn";
 const SIGNUP = "/signUp";
 
-
-
-export const getTitle = (path, { spaceName }) => {
+export const getTitle = (path, { titleData }) => {
     switch (path) {
         case TOP:
             return 'ショクタメ'
@@ -29,4 +28,9 @@ export const getTitle = (path, { spaceName }) => {
         case MYPAGE:
             return 'マイページ'
     }
+    return path.match(FARMERR)
+        ? titleData.fields.farmName
+        : path.match(GIFTT)
+            ? titleData.fields.productName
+            : null
 }

@@ -85,9 +85,12 @@ export default {
   },
   computed: {
     getTitle() {
-      return getTitle(this.path, { spaceName: this.name });
+      return getTitle(this.path, {
+        titleData: this.$store.state.farmers.farmer
+      });
     },
-    ...mapGetters("auth", ["Uid", "User"])
+    ...mapGetters("auth", ["Uid", "User"]),
+    ...mapGetters("farmers", ["farmer"])
   },
   watch: {
     $route() {
