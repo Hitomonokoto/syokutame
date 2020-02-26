@@ -4,7 +4,7 @@
     :class="cls"
     :type="type"
     :placeholder="placeholder"
-    @input="updateValue"
+    @input="$emit('input', $event.target.value)"
     :style="fontSize"
   />
 </template>
@@ -24,12 +24,16 @@ export default {
     fontSize: {
       type: String
     }
-  },
-  methods: {
-    updateValue: function(e) {
-      this.$emit("input", e.target.value);
-    }
   }
+  // @inputのメソッドを分けて書く場合の書き方
+
+  // @input="updateValue($event)" <- ここの($event)は省略できる
+
+  // methods: {
+  //   updateValue(e) {
+  //     this.$emit("input", e.target.value);
+  //   }
+  // }
 };
 </script>
 

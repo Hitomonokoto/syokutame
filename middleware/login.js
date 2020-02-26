@@ -1,16 +1,20 @@
-import Cookies from "universal-cookie";
+import { fireauth } from "~/plugins/firebase"
 
-export default async ({ req, store, route, redirect }) => {
-    const cookies = req ? new Cookies(req.headers.cookie) : new Cookies();
-    const token = await cookies.get("token");
-    const lastPath = await cookies.get("lastPath");
+// ~/plugins/firebase は複数エクスポートしているので、
+// 読み込む時は分割代入で読み込まなければならない。
 
-    if (token && !store.state.auth.uid) {
-        console.log("cookieからtokenを取得しました。");
-        await store.dispatch('auth/getUserAction', token);
-        if (lastPath == '/user') {
-            redirect("/");
-        }
+// import fireauth from "~/plugins/firebase"
+// このように描いてしまうと ~/plugins/firebase の中身全てを
+// fireauth という名前で読み込むことになてしまう。
+
+
+
+export default function ({ store }) {
+    if (!store.state.auth.uid) {
+        fireauth.onAuthStateChanged(async user => {
+            if (user) {
+                await store.dispatch('auth/getUserAction', user.uid);
+            }
+        });
     }
-    cookies.set("lastPath", route.path);
-};
+}

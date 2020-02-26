@@ -26,6 +26,7 @@
     "nuxt-fontawesome": "^0.4.0",
     "path-to-regexp": "^6.1.0",
     "sass-loader": "^8.0.2",
+    "store2": "^2.10.0",
     "universal-cookie": "^4.0.2",
     "uuid": "^3.3.3"
   },

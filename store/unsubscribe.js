@@ -1,4 +1,4 @@
-import firestore from "~/plugins/firebase";
+import { firestore } from "~/plugins/firebase";
 
 export const state = () => ({
   info_data: ''

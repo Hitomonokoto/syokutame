@@ -1,5 +1,5 @@
 import client from "~/plugins/contentful";
-import firestore from "~/plugins/firebase";
+import { firestore } from "~/plugins/firebase";
 
 export const state = () => ({
     farmers: [],

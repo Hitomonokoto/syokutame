@@ -20,3 +20,15 @@ if (!firebase.apps.length) {
 export const fireauth = firebase.auth();
 export const firestore = firebase.firestore();
 export const firestorage = firebase.storage();
+
+export const auth = () => {
+    return new Promise((resolve, reject) => {
+        fireauth.onAuthStateChanged(user => {
+            resolve(user || false)
+        })
+    })
+}
+
+export default (context, inject) => {
+    inject('fireauth', fireauth)
+}

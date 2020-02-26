@@ -6,10 +6,20 @@
 </template>
 
 <script>
+import { fireauth } from "~/plugins/firebase";
 import navigation from "~/components/Navigation";
 export default {
   components: {
     navigation
+  },
+  mounted() {
+    if (!this.$store.state.auth.uid) {
+      fireauth.onAuthStateChanged(async user => {
+        if (user) {
+          await this.$store.dispatch("auth/getUserAction", user.uid);
+        }
+      });
+    }
   },
   data() {
     return {};

@@ -4,7 +4,7 @@
     v-model="oldText"
     :class="cls"
     :placeholder="placeholder"
-    @input="updateValue"
+    @input="this.$emit('input', $event.target.value)"
     style="font-size:16px;"
     ref="adjust_textarea"
     @keydown="adjustHeight"

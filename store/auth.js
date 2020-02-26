@@ -1,8 +1,5 @@
 import { firestore, fireauth } from "~/plugins/firebase";
 
-import Cookies from "universal-cookie";
-const cookies = new Cookies();
-
 export const state = () => ({
   uid: "",
   user: {}
@@ -35,7 +32,6 @@ export const actions = {
         .signInWithEmailAndPassword(signInData.email, signInData.password)
         .then(user => {
           context.dispatch("getUserAction", user.user.uid)
-          cookies.set("token", user.user.uid);
           this.$router.push("/");
           console.log("サインインに成功しました！");
         })
@@ -47,24 +43,17 @@ export const actions = {
   },
 
   // サインアップ
-  signUpAction(context, signUpData) {
-    console.log(signUpData)
+  signUpAction(context, { nickname, email, password }) {
     return new Promise(resolve => {
       fireauth
-        .createUserWithEmailAndPassword(signUpData.email, signUpData.password)
-        .then(user => {
-          context.dispatch("createUserDataAction", {
+        .createUserWithEmailAndPassword(email, password)
+        .then(async user => {
+          await context.dispatch("createUserDataAction", {
             uid: user.user.uid,
-            nickname: signUpData.nickname
+            nickname: nickname
           })
-            .then(() => {
-              console.log("サインアップに成功しました！");
-              cookies.set("token", user.user.uid);
-              this.$router.push("/");
-            })
-            .catch(error => {
-              console.log("クッキーの登録に失敗しました！");
-            });
+          console.log("サインアップに成功しました！");
+          this.$router.push("/");
         })
         .catch(error => {
           console.log("サインアップに失敗しました！");
@@ -74,24 +63,21 @@ export const actions = {
   },
 
   // ユーザーデータをデータベースに登録
-  async createUserDataAction(context, userData) {
-    const docRef = firestore.collection("users").doc(userData.uid);
+  async createUserDataAction(context, { uid, nickname }) {
+    const docRef = firestore.collection("users").doc(uid);
     docRef.set({
-      nickname: userData.nickname,
+      nickname,
       user_icon: "/samplein.jpg",
       cmn: 0,
       contentful_id: null
     });
-    context.commit("getUid", {
-      uid: userData.uid
-    });
+    context.commit("getUid", uid);
     context.commit("getUser", {
-      nickname: userData.nickname,
+      nickname,
       user_icon: "/samplein.jpg",
       cmn: 0,
       contentful_id: null
     });
-    this.$router.push("/");
   },
 
   // ユーザー情報を取得

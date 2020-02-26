@@ -3,7 +3,7 @@
     class="basic"
     :class="cls"
     :placeholder="placeholder"
-    @input="updateValue"
+    @input="$emit('input', $event.target.value)"
     style="font-size:16px;"
   ></textarea>
 </template>
@@ -16,11 +16,6 @@ export default {
     },
     placeholder: {
       type: String
-    }
-  },
-  methods: {
-    updateValue: function(e) {
-      this.$emit("input", e.target.value);
     }
   }
 };
